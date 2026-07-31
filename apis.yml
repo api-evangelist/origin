@@ -1,8 +1,12 @@
 aid: origin
 name: Origin
-description: Origin is a company surfaced as a portfolio company of general-catalyst, techstars and added
-  to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment
-  pipeline.
+description: Origin (Origin Markets) is a digital debt capital markets (DCM) platform that
+  automates bond issuance from front to back, connecting issuers, dealers, lawyers, and
+  market infrastructure on a single platform. Its products cover automated transaction
+  Documentation (termsheets and final terms with collaborative review and e-signing),
+  Structured Notes, and a Marketplace database of 1,000+ issuers. Origin publishes a
+  read-only Trades API and the open Airbrush "universal data language" (an ISO 20022-aligned
+  OpenAPI specification) for post-trade straight-through processing across the ecosystem.
 url: https://raw.githubusercontent.com/api-evangelist/origin/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -11,17 +15,104 @@ x-backed-by:
 - techstars
 x-tier: stub
 x-tier-reason: portfolio-lead
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
 tags:
 - Company
-apis: []
+- Financial Services
+- Capital Markets
+- Bond Issuance
+- Debt Capital Markets
+- Fixed Income
+- Post-Trade
+- ISO 20022
+- FinTech
+- Straight-Through Processing
+image: https://originmarkets.com/universal/svg/social-accounts.svg
+apis:
+- aid: origin:origin-trades-api
+  name: Origin Trades API
+  description: The Trades API from Origin — 3 operation(s) for trades.
+  humanURL: https://airbrush.originmarkets.com/v3/
+  baseURL: https://airbrush.originmarkets.com/v3
+  tags:
+  - Trades
+  properties:
+  - type: OpenAPI
+    url: openapi/origin-trades-api-openapi.yml
+  - type: Documentation
+    url: https://airbrush.originmarkets.com/v3/
+  - type: Examples
+    url: examples/origin-termsheet-fixed_rate.json
+  - type: Examples
+    url: examples/origin-termsheet-floating_rate.json
+  - type: Examples
+    url: examples/origin-termsheet-zero_coupon.json
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/origin-domain-security.yml
+- type: AgenticAccess
+  url: agentic-access/origin-agentic-access.yml
+- type: Authentication
+  url: authentication/origin-authentication.yml
+- type: Conventions
+  url: conventions/origin-conventions.yml
+- type: Lifecycle
+  url: lifecycle/origin-lifecycle.yml
+- type: Conformance
+  url: conformance/origin-conformance.yml
+- type: ErrorCatalog
+  url: errors/origin-problem-types.yml
+- type: DataModel
+  url: data-model/origin-data-model.yml
+- type: ChangeLog
+  url: changelog/origin-changelog.yml
+- type: LLMsTxt
+  url: llms/origin-llms.txt
+- type: Overlay
+  url: overlays/origin-airbrush-overlay.yaml
+- type: AgentSkill
+  url: skills/_index.yml
 - type: Website
   url: https://originmarkets.com/
+- type: DeveloperPortal
+  url: https://login2.originmarkets.com/api/v1/
+- type: Documentation
+  url: https://airbrush.originmarkets.com/v3/
+- type: APIReference
+  url: https://airbrush.originmarkets.com/v3/
+- type: Blog
+  url: https://originmarkets.com/blog
+- type: GitHubOrganization
+  url: https://github.com/OriginMarkets/
+- type: StatusPage
+  url: https://status.originmarkets.com/
+- type: Support
+  url: https://originmarkets.com/contact-us
+- type: PrivacyPolicy
+  url: https://originmarkets.com/privacy-policy
+- type: About
+  url: https://originmarkets.com/about
+x-enrichment:
+  date: '2026-07-20'
+  status: enriched
+  artifacts_added: 16
+  pass: local-v1

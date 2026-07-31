@@ -1,0 +1,10 @@
+generated: '2026-07-20'
+method: generated
+skills:
+- file: origin-fetch-post-trade-data.md
+  name: Fetch Origin post-trade and termsheet data
+  api: openapi/origin-airbrush-openapi-original.yml
+  operations:
+  - "GET /trades/"
+  - "GET /trades/{TradeId}/termsheet-data/"
+  - "GET /trades/{TradeId}/post-trade-data/"

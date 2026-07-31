@@ -1,0 +1,25 @@
+generated: '2026-07-20'
+method: searched
+source: openapi/origin-airbrush-openapi-original.yml
+docs: https://airbrush.originmarkets.com/v3/
+summary:
+  types: [apiKey]
+  api_key_in: [header]
+  oauth2_flows: []
+notes: >
+  The Origin Trades API (Airbrush v3) authenticates with a single API key passed in the
+  API-Key request header, issued by Origin. The Swagger 2.0 document models this as a
+  header parameter rather than a declared securityDefinitions scheme, so the mechanical
+  deriver reports no formal scheme; the auth model below is captured from the documented
+  request header and the per-operation 403 "Invalid API Key" response. If the key is
+  omitted the API returns the interactive documentation page instead of data.
+schemes:
+- name: API-Key
+  type: apiKey
+  in: header
+  parameter_name: API-Key
+  description: >
+    Unique API key used for authentication, provided by Origin. Scopes the response to
+    the trades the key has been granted access to. Invalid keys return HTTP 403 with a
+    {"detail": "Invalid API Key"} body.
+  sources: [openapi/origin-airbrush-openapi-original.yml]

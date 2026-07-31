@@ -1,0 +1,14 @@
+{
+  "provider": "origin",
+  "sources": [
+    "origin-trades-api-openapi.yml"
+  ],
+  "outputs": [
+    "origin-trades-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

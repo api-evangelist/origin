@@ -1,0 +1,21 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/origin-airbrush-openapi-original.yml
+format: custom
+envelope:
+  field: detail
+  media_type: application/json
+  note: >
+    Errors are returned as a plain JSON object with a single "detail" string. This is not
+    RFC 9457 application/problem+json.
+problems:
+- status: 403
+  title: Invalid API Key
+  detail: Invalid API Key
+  remediation: >
+    Copy/paste the API key exactly as provided by Origin. If it still fails, contact Origin
+    support. Omitting the key returns the interactive documentation page rather than an error.
+  source_operations:
+  - openapi/origin-airbrush-openapi-original.yml#get /trades/
+  - openapi/origin-airbrush-openapi-original.yml#get /trades/{TradeId}/termsheet-data/
+  - openapi/origin-airbrush-openapi-original.yml#get /trades/{TradeId}/post-trade-data/

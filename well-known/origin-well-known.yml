@@ -1,0 +1,26 @@
+generated: '2026-07-20'
+method: searched
+source: live probes of /.well-known/ on Origin hosts
+note: >
+  No /.well-known/ discovery documents are published on the Origin website or API hosts
+  as of the probe date. All probed paths returned 404 (or a redirect to a 404). This is a
+  recorded negative result, not a gap to fabricate around.
+hosts:
+- host: https://originmarkets.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+- host: https://login2.originmarkets.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+- host: https://airbrush.originmarkets.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404

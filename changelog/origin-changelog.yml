@@ -1,0 +1,22 @@
+generated: '2026-07-20'
+method: searched
+source: https://github.com/OriginMarkets/Airbrush/releases
+scheme: semver-tagged-github-releases
+current_version: v3.0
+note: >
+  The open Airbrush "universal data language" (which the Trades API v3 responses are structured
+  against) is versioned via tagged GitHub releases. No separate dated changelog page is published
+  for the hosted Trades API; these are the release milestones of the underlying data standard.
+entries:
+- version: v3.0
+  date: '2021-10-26'
+  breaking: false
+  highlights: Current Airbrush data-language release; Trades API responses align to this version.
+- version: v2.0
+  date: '2021-06-21'
+  breaking: true
+  highlights: Second major revision of the Airbrush specification.
+- version: v1.0
+  date: '2021-02-16'
+  breaking: false
+  highlights: Initial public Airbrush specification release.

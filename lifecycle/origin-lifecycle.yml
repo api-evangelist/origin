@@ -1,0 +1,22 @@
+generated: '2026-07-20'
+method: searched
+source: >
+  https://airbrush.originmarkets.com/v3/ , https://status.originmarkets.com/ ,
+  https://github.com/OriginMarkets/Airbrush/releases
+versioning:
+  scheme: uri-path
+  current: v3
+  docs: https://airbrush.originmarkets.com/v3/
+  note: >
+    The Trades API is served under a /v3 path (Airbrush v3, spec version 3.0.0). The legacy
+    API docs surface is under /api/v1 on login2.originmarkets.com. The open Airbrush data
+    language is versioned via tagged GitHub releases (v1.0, v2.0, v3.0).
+deprecation:
+  policy_url: null
+  sunset_header: false
+  note: No published deprecation/Sunset policy was found.
+sla:
+  url: null
+status_page: https://status.originmarkets.com/
+status_page_provider: UptimeRobot
+deprecated_operations: []

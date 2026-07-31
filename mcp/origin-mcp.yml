@@ -1,0 +1,22 @@
+generated: '2026-07-20'
+method: derived
+status: candidate
+source: openapi/origin-airbrush-openapi-original.yml
+note: >
+  Origin does not publish an official hosted or remote MCP server. The tools below are a
+  CANDIDATE surface derived one-per-operation from the Airbrush v3 Trades API OpenAPI, as a
+  starting point for wrapping the read-only API for agent use. Not an endorsed or live server.
+server:
+  name: origin-trades
+  transport: http
+  url: null
+tools:
+- name: list_trades
+  description: Return the list of trades the API key has access to.
+  source_operation: openapi/origin-airbrush-openapi-original.yml#get /trades/
+- name: get_trade_termsheet_data
+  description: Return the termsheet data for a trade by TradeId.
+  source_operation: openapi/origin-airbrush-openapi-original.yml#get /trades/{TradeId}/termsheet-data/
+- name: get_trade_post_trade_data
+  description: Return the post-trade data for a trade by TradeId.
+  source_operation: openapi/origin-airbrush-openapi-original.yml#get /trades/{TradeId}/post-trade-data/

@@ -1,0 +1,33 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/origin-airbrush-openapi-original.yml
+note: >
+  Standards conformance derived from the Airbrush v3 OpenAPI content and Origin docs.
+  Airbrush is explicitly aligned to ISO 20022 for fixed-income issuance data (InterestTypeCode,
+  TefraCategoryISO, CouponTypeISO and related code lists appear in the definitions). No
+  published third-party security/compliance certification program was found, so no Compliance
+  pointer is emitted.
+standards:
+- id: iso20022
+  conforms: true
+  evidence: >
+    Definitions carry ISO 20022 code lists and aligned fields (CouponTypeISO / InterestTypeCode,
+    TefraCategoryISO) for termsheet and post-trade bond data.
+- id: oauth2
+  conforms: false
+  evidence: Authentication is a single API-Key header, no OAuth2.
+- id: oidc
+  conforms: false
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: 'Errors use a plain JSON detail envelope, not application/problem+json.'
+- id: fhir
+  conforms: false
+- id: fapi
+  conforms: false
+- id: scim
+  conforms: false
+- id: odata
+  conforms: false
+- id: json-api
+  conforms: false

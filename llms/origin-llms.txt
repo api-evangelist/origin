@@ -1,0 +1,27 @@
+# Origin (Origin Markets)
+
+> Origin Markets is a digital debt capital markets (DCM) platform that automates bond issuance from front to back, connecting issuers, dealers, lawyers, and market infrastructure on one platform. It publishes a read-only Trades API and the open Airbrush "universal data language" — an ISO 20022-aligned OpenAPI specification for post-trade straight-through processing.
+
+## APIs
+
+- [Origin Trades API (Airbrush v3)](https://airbrush.originmarkets.com/v3/): Read-only API for fetching post-trade and termsheet data for the bond trades an API key has access to. API-Key header authentication.
+
+## Specs
+
+- [Airbrush v3 OpenAPI (Swagger 2.0)](https://raw.githubusercontent.com/api-evangelist/origin/refs/heads/main/openapi/origin-airbrush-openapi-original.yml)
+- [Airbrush data language (source)](https://github.com/OriginMarkets/Airbrush)
+
+## Docs
+
+- [API Documentation](https://airbrush.originmarkets.com/v3/)
+- [Developer Portal / API v1 docs](https://login2.originmarkets.com/api/v1/)
+- [Products](https://originmarkets.com/products)
+- [Blog](https://originmarkets.com/blog)
+- [Status Page](https://status.originmarkets.com/)
+- [Privacy Policy](https://originmarkets.com/privacy-policy)
+
+## Operations
+
+- listTrades — GET /trades/ — list the trades your API key can access
+- getTradeTermsheetData — GET /trades/{TradeId}/termsheet-data/ — termsheet data for a trade
+- getTradePostTradeData — GET /trades/{TradeId}/post-trade-data/ — post-trade data for a trade

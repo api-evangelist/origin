@@ -1,0 +1,21 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Origin Trades API (Airbrush v3)
+  version: 1.0.0
+extends: openapi/origin-airbrush-openapi-original.yml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: origin
+    x-apievangelist-standard: iso20022
+    x-apievangelist-auth: api-key-header
+    x-apievangelist-read-only: true
+- target: $.paths['/trades/'].get
+  update:
+    operationId: listTrades
+- target: $.paths['/trades/{TradeId}/termsheet-data/'].get
+  update:
+    operationId: getTradeTermsheetData
+- target: $.paths['/trades/{TradeId}/post-trade-data/'].get
+  update:
+    operationId: getTradePostTradeData

@@ -1,0 +1,32 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/origin-airbrush-openapi-original.yml
+note: >
+  Cross-cutting request/response semantics for the Origin Trades API (Airbrush v3),
+  derived from the OpenAPI and Origin docs. The API is read-only (GET only).
+authentication:
+  style: api-key-header
+  header: API-Key
+  ref: authentication/origin-authentication.yml
+idempotency:
+  supported: false
+  note: >
+    All operations are safe GET reads; no write operations and no idempotency-key mechanism
+    are documented. No Idempotency pointer is emitted.
+pagination:
+  supported: false
+  note: /trades/ returns the full list of accessible trades; no pagination params documented.
+versioning:
+  style: uri-path
+  current: v3
+  ref: lifecycle/origin-lifecycle.yml
+media_type: application/json
+error_envelope:
+  shape: '{"detail": "<message>"}'
+  ref: errors/origin-problem-types.yml
+rate_limit_signaling:
+  documented: false
+data_language:
+  name: Airbrush
+  standard: ISO 20022-aligned
+  ref: conformance/origin-conformance.yml

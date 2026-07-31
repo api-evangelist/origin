@@ -1,0 +1,103 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/origin-airbrush-openapi-original.yml
+note: >
+  Entity-relationship graph derived from the Airbrush v3 OpenAPI definitions. The central
+  entity is a Trade (bond issuance); its termsheet and post-trade data compose the sub-entities
+  below via $ref links. Relationships reflect object vs array (has_one vs has_many) in the spec.
+entities:
+- name: Trade
+  description: A single bond trade / issuance (TradeDataAPIResponse), the root object.
+  central: true
+- name: Agents
+- name: Clearing
+- name: CurrencyObject
+- name: Dealer
+- name: Denominations
+- name: Form
+- name: Fungible
+- name: Guarantor
+- name: GoverningLaw
+- name: Identifiers
+- name: Interest
+- name: Issuer
+- name: Listing
+- name: OtherProvisions
+- name: Pricing
+- name: ProductGovernance
+- name: Programme
+- name: Ratings
+- name: Redemption
+relationships:
+- from: Trade
+  to: Agents
+  type: has_one
+  via: agents
+- from: Trade
+  to: Clearing
+  type: has_one
+  via: clearing
+- from: Trade
+  to: CurrencyObject
+  type: has_one
+  via: currency
+- from: Trade
+  to: Form
+  type: has_one
+  via: form
+- from: Trade
+  to: Fungible
+  type: has_one
+  via: fungible
+- from: Trade
+  to: Identifiers
+  type: has_one
+  via: identifiers
+- from: Trade
+  to: Interest
+  type: has_one
+  via: interest
+- from: Trade
+  to: OtherProvisions
+  type: has_one
+  via: other_provisions
+- from: Trade
+  to: Pricing
+  type: has_one
+  via: pricing
+- from: Trade
+  to: ProductGovernance
+  type: has_one
+  via: product_governance
+- from: Trade
+  to: Programme
+  type: has_one
+  via: programme
+- from: Trade
+  to: Redemption
+  type: has_one
+  via: redemption
+- from: Trade
+  to: Dealer
+  type: has_many
+  via: dealers
+- from: Trade
+  to: Denominations
+  type: has_many
+  via: denominations
+- from: Trade
+  to: Guarantor
+  type: has_many
+  via: guarantors
+- from: Trade
+  to: Issuer
+  type: has_many
+  via: issuers
+- from: Trade
+  to: Listing
+  type: has_many
+  via: listings
+- from: Trade
+  to: Ratings
+  type: has_many
+  via: ratings
