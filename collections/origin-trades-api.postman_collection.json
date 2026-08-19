@@ -1,0 +1,461 @@
+{
+  "item": [
+    {
+      "id": "391d6bf8-468c-46b7-a1e5-a23d43a5694b",
+      "name": "Trades",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bbf5441d-487b-4558-be9e-5f6c744dbd71",
+          "name": "Returns a list of JSON objects of the trades that you have access to.",
+          "request": {
+            "name": "Returns a list of JSON objects of the trades that you have access to.",
+            "description": {},
+            "url": {
+              "path": [
+                "trades",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "A unique API key used for authentication provided by Origin.\nIf the key is omitted, you will obtain this documentation page as response.\n",
+                "key": "API-Key",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "535fe581-aeaf-44de-a0d8-cad73eb553a4",
+              "name": "Each object in the list represents a single trade.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "trades",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "A unique API key used for authentication provided by Origin.\nIf the key is omitted, you will obtain this documentation page as response.\n",
+                    "key": "API-Key",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"Fixed to Floating\",\n  \"type_iso\": \"OTHR\",\n  \"dealers\": [\n    \"string\",\n    \"string\"\n  ],\n  \"documentation\": [\n    \"EMTCN\",\n    \"ECB\"\n  ],\n  \"is_syndicated\": false,\n  \"is_benchmark\": true,\n  \"is_test\": true,\n  \"isin_code\": \"EOLU18UC9474\",\n  \"issuers\": [\n    \"string\",\n    \"string\"\n  ],\n  \"maturity_date\": \"1971-04-21\",\n  \"settlement_date\": \"1987-09-17\",\n  \"size\": 8677,\n  \"stages_available\": [\n    \"post_trade_legal\",\n    \"post_trade_legal\"\n  ],\n  \"status_of_the_notes\": \"Senior Preferred\",\n  \"trade_date\": \"1959-05-29\",\n  \"trade_id\": 700\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "74fd81c8-3ce4-4b22-a7c9-07bc0f5bedce",
+              "name": "Permission denied as the API-Key provided is invalid.\nBe sure to copy/paste the key exactly as provided by Origin.\nIf it still doesn't work, contact Origin support.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "trades",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "A unique API key used for authentication provided by Origin.\nIf the key is omitted, you will obtain this documentation page as response.\n",
+                    "key": "API-Key",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"Invalid API Key\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f0a0dd29-49c9-4a76-9967-af78efaeb213",
+          "name": "Returns a JSON object containing the termsheet data for the trade with\nthe given id, provided you have access to it.\n",
+          "request": {
+            "name": "Returns a JSON object containing the termsheet data for the trade with\nthe given id, provided you have access to it.\n",
+            "description": {},
+            "url": {
+              "path": [
+                "trades",
+                ":TradeId",
+                "termsheet-data",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "TradeId",
+                  "description": "(Required) The unique ID of the trade."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "A unique API key used for authentication provided by Origin.\nIf the key is omitted, you will obtain this documentation page as response.\n",
+                "key": "API-Key",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7767fa4a-5d2b-4ab2-9548-2e9b1387a897",
+              "name": "Each object in the list represents a single trade.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "trades",
+                    ":TradeId",
+                    "termsheet-data",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "TradeId",
+                      "description": "(Required) The unique ID of the trade."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "A unique API key used for authentication provided by Origin.\nIf the key is omitted, you will obtain this documentation page as response.\n",
+                    "key": "API-Key",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"agents\": {\n    \"determination_agent\": {\n      \"name\": \"string\"\n    },\n    \"calculation_agent\": {\n      \"name\": \"string\"\n    },\n    \"issuing_agent\": {\n      \"name\": \"string\"\n    },\n    \"paying_agent\": {\n      \"name\": \"string\"\n    },\n    \"registrar\": {\n      \"name\": \"string\"\n    }\n  },\n  \"bond_fallback_provisions\": \"string\",\n  \"clearing\": {\n    \"clearing_system\": [\n      \"Clearstream Luxembourg\",\n      \"Euroclear Netherlands\"\n    ],\n    \"dealer_clearing_house\": \"Euroclear Belgium\",\n    \"dealer_account\": \"DTC\",\n    \"issuer_clearing_house\": \"National Bank of Belgium\",\n    \"issuer_account\": \"string\",\n    \"delivery\": \"Delivery free of payment\"\n  },\n  \"confidential\": true,\n  \"currency\": {\n    \"notional\": \"SEK\",\n    \"payment\": \"COP\",\n    \"settlement\": \"INR\"\n  },\n  \"dealers\": [\n    {\n      \"country\": \"KN\",\n      \"lei\": \"QVAAN6A988678Q8FOV26\",\n      \"name\": \"string\",\n      \"role\": \"Lead Manager\",\n      \"is_settlement_manager\": false,\n      \"is_stabilising_manager\": false\n    },\n    {\n      \"country\": \"VN\",\n      \"lei\": \"Q6M9PQYNLZPC1VR6NR31\",\n      \"name\": \"string\",\n      \"role\": \"Sole Manager\",\n      \"is_settlement_manager\": true,\n      \"is_stabilising_manager\": true\n    }\n  ],\n  \"denominations\": [\n    {\n      \"increment\": 1404,\n      \"min_denom\": 6914\n    },\n    {\n      \"increment\": 5024,\n      \"min_denom\": 6616\n    }\n  ],\n  \"ecb_eligible\": false,\n  \"form\": {\n    \"global_note_required\": false,\n    \"global_note_type\": \"CGN\",\n    \"after_exchange_physical_form\": \"Definitive Notes\",\n    \"initial_physical_form\": \"Definitive Notes\",\n    \"form_of_the_notes\": \"Book-entry\"\n  },\n  \"fungible\": {\n    \"fungibility_status\": \"Fungible 40 days after Tap Settlement Date\",\n    \"accrued_interest_days\": 9032,\n    \"accrued_interest_notional\": 7654,\n    \"funge_date\": \"string\",\n    \"new_total_size\": 5663,\n    \"original_size\": 3649,\n    \"cfi_code\": \"IRZLDR\",\n    \"cins_code\": \"DRS7QE5A3\",\n    \"cmu_code\": \"HRBXIA04164\",\n    \"common_code\": \"6HB0VVSJN\",\n    \"cusip_code\": \"S7V0PA9H7\",\n    \"isin_code\": \"VJ2QIX45ZY44\",\n    \"fisn_code\": \"Y/f\",\n    \"sedol_code\": \"G0PH8BV\",\n    \"valoren_code\": \"6162551\",\n    \"wkn_code\": \"SHS1E1\"\n  },\n  \"guarantors\": [\n    {\n      \"country\": \"CG\",\n      \"lei\": \"R2K00I3UQ6PIW5R4BF62\",\n      \"name\": \"string\",\n      \"ratings\": [\n        {\n          \"agency\": \"S&P\",\n          \"outlook\": \"N/A\",\n          \"value\": \"Ba2\"\n        },\n        {\n          \"agency\": \"DBRS\",\n          \"outlook\": \"DEVELOPING\",\n          \"value\": \"Ca\"\n        }\n      ]\n    },\n    {\n      \"country\": \"CW\",\n      \"lei\": \"RUQ4BS79Z5XOO0VJ6415\",\n      \"name\": \"string\",\n      \"ratings\": [\n        {\n          \"agency\": \"Fitch\",\n          \"outlook\": \"POSITIVE\",\n          \"value\": \"NR\"\n        },\n        {\n          \"agency\": \"Moody's\",\n          \"outlook\": \"N.M.\",\n          \"value\": \"B+\"\n        }\n      ]\n    }\n  ],\n  \"governing_law\": \"SE\",\n  \"identifiers\": {\n    \"cfi_code\": \"UNBERA\",\n    \"cins_code\": \"NS1PGDHFN\",\n    \"cmu_code\": \"YLDKTS46685\",\n    \"common_code\": \"QC6UDZJLD\",\n    \"cusip_code\": \"W8XO633GS\",\n    \"isin_code\": \"DUUWPCXFXXA3\",\n    \"fisn_code\": \"uL/]:n\",\n    \"sedol_code\": \"5NCXLNB\",\n    \"valoren_code\": \"86163380\",\n    \"wkn_code\": \"ENRPWF\"\n  },\n  \"interest\": {\n    \"initial_stub_type\": \"None\",\n    \"last_stub_type\": \"Long Last\",\n    \"interest_commencement_date\": \"string\",\n    \"first_interest_payment_date\": \"string\",\n    \"change_of_interest_basis_notification_or_automatic\": \"Automatic\",\n    \"periods\": [\n      {\n        \"amortization_yield\": 9172.87629779709,\n        \"annual_interest_payment_dates\": [\n          \"string\",\n          \"string\"\n        ],\n        \"benchmark\": \"SONIA\",\n        \"benchmark_iso\": \"SONA\",\n        \"business_day_adjustment\": \"Unadjusted\",\n        \"business_day_convention\": \"Modified Preceding\",\n        \"business_day_convention_iso\": \"MODF\",\n        \"business_days_for_payment\": [\n          \"BEBR\",\n          \"IDJA\"\n        ],\n        \"business_days_for_payment_iso\": [\n          \"Surat\",\n          \"Stanley\"\n        ],\n        \"day_count_fraction\": \"30E/360 (ISDA)\",\n        \"day_count_fraction_iso\": \"A007\",\n        \"fixed_amount\": 4380.8367337130685,\n        \"fixed_rate\": 4085.9746855297617,\n        \"floating_basis\": \"NOK M/S\",\n        \"floating_basis_type\": \"Term Rate\",\n        \"interest_determination_manner\": \"Screen Rate Determination\",\n        \"interest_fixing_reference_date\": \"Interest Payment Date\",\n        \"linear_interpolation\": \"string\",\n        \"margin\": 2141.681505373826,\n        \"max_interest_rate\": 945.8902562784377,\n        \"min_interest_rate\": 28.398949663440696,\n        \"number_of_days\": 1306,\n        \"overnight_calculation_type\": \"Compounded Daily\",\n        \"overnight_determination_method\": \"Index Determination\",\n        \"overnight_observation_method\": \"Observation Shift\",\n        \"payment_frequency\": \"Annually\",\n        \"relevant_financial_centre_for_fixing\": \"Gurgaon\",\n        \"relevant_financial_centre_for_fixing_iso\": \"AUME\",\n        \"screen_rate_page\": \"string\",\n        \"screen_rate_source\": \"Bloomberg\",\n        \"term\": 7417,\n        \"term_period\": \"DAYS\",\n        \"type\": \"Fixed to Floating\",\n        \"type_iso\": \"OTHR\",\n        \"start_date\": \"string\",\n        \"end_date\": \"string\",\n        \"underlying\": {\n          \"name\": \"string\",\n          \"type\": \"CMS\",\n          \"isin_code\": \"string\"\n        }\n      },\n      {\n        \"amortization_yield\": 2662.0118176796627,\n        \"annual_interest_payment_dates\": [\n          \"string\",\n          \"string\"\n        ],\n        \"benchmark\": \"EURIBOR\",\n        \"benchmark_iso\": \"CIBO\",\n        \"business_day_adjustment\": \"Adjusted\",\n        \"business_day_convention\": \"Preceding\",\n        \"business_day_convention_iso\": \"NEAR\",\n        \"business_days_for_payment\": [\n          \"USCH\",\n          \"MXMC\"\n        ],\n        \"business_days_for_payment_iso\": [\n          \"Male\",\n          \"Basle\"\n        ],\n        \"day_count_fraction\": \"30/360\",\n        \"day_count_fraction_iso\": \"A008\",\n        \"fixed_amount\": 4147.884000650905,\n        \"fixed_rate\": 3852.481184396144,\n        \"floating_basis\": \"SONIA\",\n        \"floating_basis_type\": \"Term Rate\",\n        \"interest_determination_manner\": \"ISDA Determination\",\n        \"interest_fixing_reference_date\": \"Interest Period Starting Date\",\n        \"linear_interpolation\": \"string\",\n        \"margin\": 8490.034204787553,\n        \"max_interest_rate\": 6558.137288714938,\n        \"min_interest_rate\": 2194.7662581878667,\n        \"number_of_days\": 6388,\n        \"overnight_calculation_type\": \"Weighted Average\",\n        \"overnight_determination_method\": \"Non-Index (Calculated) Determination\",\n        \"overnight_observation_method\": \"Lock-out\",\n        \"payment_frequency\": \"At Maturity\",\n        \"relevant_financial_centre_for_fixing\": \"Zurich\",\n        \"relevant_financial_centre_for_fixing_iso\": \"THBA\",\n        \"screen_rate_page\": \"string\",\n        \"screen_rate_source\": \"Reuters\",\n        \"term\": 9478,\n        \"term_period\": \"YEAR\",\n        \"type\": \"Fixed to Floating\",\n        \"type_iso\": \"ZCPN\",\n        \"start_date\": \"string\",\n        \"end_date\": \"string\",\n        \"underlying\": {\n          \"name\": \"string\",\n          \"type\": \"Equity\",\n          \"isin_code\": \"string\"\n        }\n      }\n    ]\n  },\n  \"issuance_category\": \"Social Bonds\",\n  \"issuance_type\": \"STDA\",\n  \"is_fungible\": true,\n  \"issuers\": [\n    {\n      \"country\": \"ML\",\n      \"lei\": \"EAAJVNM6FS42BZ13V274\",\n      \"name\": \"string\",\n      \"type\": \"Corporate\",\n      \"ratings\": [\n        {\n          \"agency\": \"DBRS\",\n          \"outlook\": \"NEGATIVE\",\n          \"value\": \"Baa1\"\n        },\n        {\n          \"agency\": \"Fitch\",\n          \"outlook\": \"N/A\",\n          \"value\": \"Ba2\"\n        }\n      ]\n    },\n    {\n      \"country\": \"SZ\",\n      \"lei\": \"M1M2HDTWUOLHGIX3OK62\",\n      \"name\": \"string\",\n      \"type\": \"FIG\",\n      \"ratings\": [\n        {\n          \"agency\": \"Fitch\",\n          \"outlook\": \"DEVELOPING\",\n          \"value\": \"BB (high)\"\n        },\n        {\n          \"agency\": \"Moody's\",\n          \"outlook\": \"EVOLVING\",\n          \"value\": \"B\"\n        }\n      ]\n    }\n  ],\n  \"listings\": {\n    \"date\": \"1977-02-07\",\n    \"exchanges\": [\n      {\n        \"name\": \"Oslo Stock Exchange\",\n        \"market_type\": \"RMQI\",\n        \"market_mic_code\": \"string\"\n      },\n      {\n        \"name\": \"Luxembourg Stock Exchange\",\n        \"market_type\": \"RMKT\",\n        \"market_mic_code\": \"string\"\n      }\n    ]\n  },\n  \"method_of_distribution\": \"SYND\",\n  \"net_proceeds\": 2852.784485314863,\n  \"other_provisions\": {\n    \"events_of_default\": \"string\",\n    \"negative_pledge_details\": \"string\"\n  },\n  \"pricing\": {\n    \"accrual_quotation_type\": \"NOT_APP\",\n    \"all_in_issuer_spread_vs_benchmark\": 6573.254717827223,\n    \"benchmark_reference\": \"string\",\n    \"benchmark_reference_yield\": 5815.081068505829,\n    \"commission_percentage\": 8713.813798808053,\n    \"issue_price\": 14.322280890414207,\n    \"mid_swap_yield\": 5058.154957014759,\n    \"reoffer_coupon_spread\": 9145.12077679657,\n    \"reoffer_spread_to_benchmark\": 3479.452066667089,\n    \"reoffer_spread_to_mid_swap\": 3481.0767652601903,\n    \"reoffer_yield\": 119.26350348294368\n  },\n  \"private_placement\": false,\n  \"product_governance\": {\n    \"mifid_manufacturers\": [\n      \"string\",\n      \"string\"\n    ],\n    \"mifir_manufacturers\": [\n      \"string\",\n      \"string\"\n    ],\n    \"target_market\": \"Professional Investors and ECPs\",\n    \"target_market_verbose\": \"string\"\n  },\n  \"programme\": {\n    \"base_prospectus_date\": \"string\",\n    \"currency\": \"USD\",\n    \"id\": \"string\",\n    \"limit\": 7249.705243058258,\n    \"name\": \"string\",\n    \"type\": \"NEUCP\"\n  },\n  \"rating_type\": \"Unrated\",\n  \"ratings\": [\n    {\n      \"agency\": \"S&P\",\n      \"outlook\": \"NEGATIVE\",\n      \"value\": \"CC (high)\"\n    },\n    {\n      \"agency\": \"Fitch\",\n      \"outlook\": \"DEVELOPING\",\n      \"value\": \"CCC\"\n    }\n  ],\n  \"redemption\": {\n    \"call_features\": [\n      \"Par Call\",\n      \"M&amp;A Call\"\n    ],\n    \"call_notice_period_days_type\": \"Calendar Days\",\n    \"call_notice_period_min\": 2535,\n    \"call_optional_redemption_price\": 1257.657548107649,\n    \"call_optional_redemption_dates\": [\n      \"string\",\n      \"string\"\n    ],\n    \"call_par_call_term\": 7037,\n    \"clean_up_call_redemption_amount\": 5137.065356576689,\n    \"make_whole_margin\": 9362.28350930345,\n    \"callable_structure\": \"string\",\n    \"change_of_control_put_required\": false,\n    \"early_redemption_event_details\": \"string\",\n    \"maturity_date\": \"string\",\n    \"perpetual\": false,\n    \"price\": 8750.996622331912,\n    \"type\": \"Redemption in shares\",\n    \"type_iso\": \"OTHR\",\n    \"extended_maturity_date\": \"string\",\n    \"covered_maturity_type\": \"Hard Bullet\",\n    \"underlying\": {\n      \"name\": \"string\",\n      \"type\": \"Equity\",\n      \"isin_code\": \"string\"\n    }\n  },\n  \"security_name\": \"string\",\n  \"security_type\": \"Equity\",\n  \"selling_restrictions\": \"Reg S\",\n  \"seniority\": \"SBOD\",\n  \"series_number\": \"string\",\n  \"series_size\": 9156,\n  \"settlement_date\": \"2021-09-16\",\n  \"settlement_window_business_day_count\": 7953,\n  \"size\": 8543,\n  \"signing_date\": \"2007-06-26\",\n  \"status_of_the_notes\": \"Senior Unsecured\",\n  \"time_of_execution\": \"string\",\n  \"tefra_category\": \"RULC\",\n  \"trade_date\": \"2010-07-02\",\n  \"trading_method\": \"UNT\",\n  \"tranche_number\": \"string\",\n  \"use_of_proceeds\": \"string\",\n  \"871m_status\": \"Out of Scope\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "17d5f102-eed6-4d07-bd1b-acf1ced0e618",
+              "name": "Permission denied as the API-Key provided is invalid.\nBe sure to copy/paste the key exactly as provided by Origin.\nIf it still doesn't work, contact Origin support.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "trades",
+                    ":TradeId",
+                    "termsheet-data",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "TradeId",
+                      "description": "(Required) The unique ID of the trade."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "A unique API key used for authentication provided by Origin.\nIf the key is omitted, you will obtain this documentation page as response.\n",
+                    "key": "API-Key",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"Invalid API Key\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "32696651-1df2-44dc-8140-de8c67e18b89",
+          "name": "Returns a JSON object containing the post trade data for the trade with\nthe given id, provided you have access to it.\n",
+          "request": {
+            "name": "Returns a JSON object containing the post trade data for the trade with\nthe given id, provided you have access to it.\n",
+            "description": {},
+            "url": {
+              "path": [
+                "trades",
+                ":TradeId",
+                "post-trade-data",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "TradeId",
+                  "description": "(Required) The unique ID of the trade."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "A unique API key used for authentication provided by Origin.\nIf the key is omitted, you will obtain this documentation page as response.\n",
+                "key": "API-Key",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "48870ee5-8d6e-4612-8d91-dfda7c861620",
+              "name": "Each object in the list represents a single trade.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "trades",
+                    ":TradeId",
+                    "post-trade-data",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "TradeId",
+                      "description": "(Required) The unique ID of the trade."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "A unique API key used for authentication provided by Origin.\nIf the key is omitted, you will obtain this documentation page as response.\n",
+                    "key": "API-Key",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"agents\": {\n    \"determination_agent\": {\n      \"name\": \"string\"\n    },\n    \"calculation_agent\": {\n      \"name\": \"string\"\n    },\n    \"issuing_agent\": {\n      \"name\": \"string\"\n    },\n    \"paying_agent\": {\n      \"name\": \"string\"\n    },\n    \"registrar\": {\n      \"name\": \"string\"\n    }\n  },\n  \"bond_fallback_provisions\": \"string\",\n  \"clearing\": {\n    \"clearing_system\": [\n      \"Euroclear/Clearstream\",\n      \"DTC\"\n    ],\n    \"dealer_clearing_house\": \"CMU\",\n    \"dealer_account\": \"National Bank of Belgium\",\n    \"issuer_clearing_house\": \"National Bank of Belgium\",\n    \"issuer_account\": \"string\",\n    \"delivery\": \"Delivery versus payment\"\n  },\n  \"confidential\": false,\n  \"currency\": {\n    \"notional\": \"VND\",\n    \"payment\": \"AUD\",\n    \"settlement\": \"HUF\"\n  },\n  \"dealers\": [\n    {\n      \"country\": \"PE\",\n      \"lei\": \"NPGVJVUKPZHME3MCNJ35\",\n      \"name\": \"string\",\n      \"role\": \"Senior Co-Lead Manager\",\n      \"is_settlement_manager\": false,\n      \"is_stabilising_manager\": true\n    },\n    {\n      \"country\": \"FJ\",\n      \"lei\": \"Z4SJMJY33C8F78B5A973\",\n      \"name\": \"string\",\n      \"role\": \"Lead Manager\",\n      \"is_settlement_manager\": true,\n      \"is_stabilising_manager\": false\n    }\n  ],\n  \"denominations\": [\n    {\n      \"increment\": 5677,\n      \"min_denom\": 6872\n    },\n    {\n      \"increment\": 1750,\n      \"min_denom\": 6968\n    }\n  ],\n  \"ecb_eligible\": false,\n  \"form\": {\n    \"global_note_required\": false,\n    \"global_note_type\": \"CGN\",\n    \"after_exchange_physical_form\": \"Definitive Notes\",\n    \"initial_physical_form\": \"Definitive Notes\",\n    \"form_of_the_notes\": \"Materialised Bearer\"\n  },\n  \"fungible\": {\n    \"fungibility_status\": \"Fungible 40 days after Tap Settlement Date\",\n    \"accrued_interest_days\": 8331,\n    \"accrued_interest_notional\": 2029,\n    \"funge_date\": \"string\",\n    \"new_total_size\": 915,\n    \"original_size\": 5663,\n    \"cfi_code\": \"KFLYHH\",\n    \"cins_code\": \"VC48OAWWS\",\n    \"cmu_code\": \"MGXDOM51703\",\n    \"common_code\": \"3Y6320HHO\",\n    \"cusip_code\": \"QQPS68JO8\",\n    \"isin_code\": \"UINJTTZA9ZZ8\",\n    \"fisn_code\": \"u/vA4v\",\n    \"sedol_code\": \"8XBI3TF\",\n    \"valoren_code\": \"5064392\",\n    \"wkn_code\": \"7LNACU\"\n  },\n  \"guarantors\": [\n    {\n      \"country\": \"ET\",\n      \"lei\": \"6CWIWDEAIPT39I5Q9S78\",\n      \"name\": \"string\",\n      \"ratings\": [\n        {\n          \"agency\": \"DBRS\",\n          \"outlook\": \"N.M.\",\n          \"value\": \"Aaa\"\n        },\n        {\n          \"agency\": \"DBRS\",\n          \"outlook\": \"EVOLVING\",\n          \"value\": \"AA\"\n        }\n      ]\n    },\n    {\n      \"country\": \"BD\",\n      \"lei\": \"7DKHXP5SFHE0XX4AS110\",\n      \"name\": \"string\",\n      \"ratings\": [\n        {\n          \"agency\": \"Moody's\",\n          \"outlook\": \"DEVELOPING\",\n          \"value\": \"Aa2\"\n        },\n        {\n          \"agency\": \"Moody's\",\n          \"outlook\": \"NEGATIVE\",\n          \"value\": \"AA (low)\"\n        }\n      ]\n    }\n  ],\n  \"governing_law\": \"GB\",\n  \"identifiers\": {\n    \"cfi_code\": \"EMNUSC\",\n    \"cins_code\": \"TBUQ4BLAA\",\n    \"cmu_code\": \"ABGKUT97129\",\n    \"common_code\": \"1O6Y3ZGJD\",\n    \"cusip_code\": \"4TTEON0QK\",\n    \"isin_code\": \"SEHL5JLEPDF1\",\n    \"fisn_code\": \"-q</rv;%[_4K<}T\",\n    \"sedol_code\": \"XCODH1P\",\n    \"valoren_code\": \"26197782\",\n    \"wkn_code\": \"Z6NCRM\"\n  },\n  \"interest\": {\n    \"initial_stub_type\": \"Short First\",\n    \"last_stub_type\": \"Short Last\",\n    \"interest_commencement_date\": \"string\",\n    \"first_interest_payment_date\": \"string\",\n    \"change_of_interest_basis_notification_or_automatic\": \"Notification\",\n    \"periods\": [\n      {\n        \"amortization_yield\": 3324.863356753743,\n        \"annual_interest_payment_dates\": [\n          \"string\",\n          \"string\"\n        ],\n        \"benchmark\": \"Bank Bill Rate\",\n        \"benchmark_iso\": \"CIBO\",\n        \"business_day_adjustment\": \"Adjusted\",\n        \"business_day_convention\": \"Modified Preceding\",\n        \"business_day_convention_iso\": \"NEAR\",\n        \"business_days_for_payment\": [\n          \"ILTA\",\n          \"DKCO\"\n        ],\n        \"business_days_for_payment_iso\": [\n          \"Glasgow\",\n          \"Tokyo\"\n        ],\n        \"day_count_fraction\": \"Eurobond Basis\",\n        \"day_count_fraction_iso\": \"A009\",\n        \"fixed_amount\": 3277.888185503188,\n        \"fixed_rate\": 4484.254165427523,\n        \"floating_basis\": \"NOK Fixed\",\n        \"floating_basis_type\": \"Term Rate\",\n        \"interest_determination_manner\": \"ISDA Determination\",\n        \"interest_fixing_reference_date\": \"Interest Period Starting Date\",\n        \"linear_interpolation\": \"string\",\n        \"margin\": 8582.430193033782,\n        \"max_interest_rate\": 4036.288062699289,\n        \"min_interest_rate\": 519.463121266085,\n        \"number_of_days\": 4711,\n        \"overnight_calculation_type\": \"Weighted Average\",\n        \"overnight_determination_method\": \"Non-Index (Calculated) Determination\",\n        \"overnight_observation_method\": \"Lag\",\n        \"payment_frequency\": \"Monthly\",\n        \"relevant_financial_centre_for_fixing\": \"Kingston (Norfolk Island)\",\n        \"relevant_financial_centre_for_fixing_iso\": \"TRAN\",\n        \"screen_rate_page\": \"string\",\n        \"screen_rate_source\": \"Bloomberg\",\n        \"term\": 1495,\n        \"term_period\": \"WEEK\",\n        \"type\": \"Fixed to Floating\",\n        \"type_iso\": \"FLRN\",\n        \"start_date\": \"string\",\n        \"end_date\": \"string\",\n        \"underlying\": {\n          \"name\": \"string\",\n          \"type\": \"Equity\",\n          \"isin_code\": \"string\"\n        }\n      },\n      {\n        \"amortization_yield\": 9213.495944883949,\n        \"annual_interest_payment_dates\": [\n          \"string\",\n          \"string\"\n        ],\n        \"benchmark\": \"PRIBOR\",\n        \"benchmark_iso\": \"BBSW\",\n        \"business_day_adjustment\": \"Adjusted\",\n        \"business_day_convention\": \"Modified Following\",\n        \"business_day_convention_iso\": \"NEAR\",\n        \"business_days_for_payment\": [\n          \"GBLO\",\n          \"CHGE\"\n        ],\n        \"business_days_for_payment_iso\": [\n          \"Pasig City\",\n          \"Pretoria\"\n        ],\n        \"day_count_fraction\": \"NL/365\",\n        \"day_count_fraction_iso\": \"A008\",\n        \"fixed_amount\": 8109.1124574303485,\n        \"fixed_rate\": 6349.67846471748,\n        \"floating_basis\": \"SONIA\",\n        \"floating_basis_type\": \"Term Rate\",\n        \"interest_determination_manner\": \"ISDA Determination\",\n        \"interest_fixing_reference_date\": \"Maturity Date\",\n        \"linear_interpolation\": \"string\",\n        \"margin\": 5015.612554585156,\n        \"max_interest_rate\": 2880.5757762238813,\n        \"min_interest_rate\": 3777.183642902208,\n        \"number_of_days\": 1772,\n        \"overnight_calculation_type\": \"Compounded Daily\",\n        \"overnight_determination_method\": \"Non-Index (Calculated) Determination\",\n        \"overnight_observation_method\": \"Lock-out\",\n        \"payment_frequency\": \"At Maturity\",\n        \"relevant_financial_centre_for_fixing\": \"Mogadishu\",\n        \"relevant_financial_centre_for_fixing_iso\": \"FRPA\",\n        \"screen_rate_page\": \"string\",\n        \"screen_rate_source\": \"Bloomberg\",\n        \"term\": 6352,\n        \"term_period\": \"MNTH\",\n        \"type\": \"Floating Rate\",\n        \"type_iso\": \"OTHR\",\n        \"start_date\": \"string\",\n        \"end_date\": \"string\",\n        \"underlying\": {\n          \"name\": \"string\",\n          \"type\": \"Credit\",\n          \"isin_code\": \"string\"\n        }\n      }\n    ]\n  },\n  \"issuance_category\": \"General Corporate Purposes\",\n  \"issuance_type\": \"STDA\",\n  \"is_fungible\": false,\n  \"issuers\": [\n    {\n      \"country\": \"YT\",\n      \"lei\": \"R8Q1KBLH5DKWYLX1W166\",\n      \"name\": \"string\",\n      \"type\": \"Other\",\n      \"ratings\": [\n        {\n          \"agency\": \"Fitch\",\n          \"outlook\": \"NEGATIVE\",\n          \"value\": \"AA (high)\"\n        },\n        {\n          \"agency\": \"S&P\",\n          \"outlook\": \"EVOLVING\",\n          \"value\": \"Baa2\"\n        }\n      ]\n    },\n    {\n      \"country\": \"MS\",\n      \"lei\": \"12U8DYBALQ5O7PVZRS53\",\n      \"name\": \"string\",\n      \"type\": \"Other\",\n      \"ratings\": [\n        {\n          \"agency\": \"Moody's\",\n          \"outlook\": \"N/A\",\n          \"value\": \"NR\"\n        },\n        {\n          \"agency\": \"S&P\",\n          \"outlook\": \"DEVELOPING\",\n          \"value\": \"A (low)\"\n        }\n      ]\n    }\n  ],\n  \"listings\": {\n    \"date\": \"2023-02-08\",\n    \"exchanges\": [\n      {\n        \"name\": \"Euronext Paris\",\n        \"market_type\": \"RMKT\",\n        \"market_mic_code\": \"string\"\n      },\n      {\n        \"name\": \"ExtraMOT\",\n        \"market_type\": \"RMKT\",\n        \"market_mic_code\": \"string\"\n      }\n    ]\n  },\n  \"method_of_distribution\": \"SYND\",\n  \"net_proceeds\": 5669.2044416424105,\n  \"other_provisions\": {\n    \"events_of_default\": \"string\",\n    \"negative_pledge_details\": \"string\"\n  },\n  \"pricing\": {\n    \"accrual_quotation_type\": \"CLEAN\",\n    \"all_in_issuer_spread_vs_benchmark\": 9442.62778875101,\n    \"benchmark_reference\": \"string\",\n    \"benchmark_reference_yield\": 4834.81880411822,\n    \"commission_percentage\": 5401.704380315156,\n    \"issue_price\": 6162.409106597784,\n    \"mid_swap_yield\": 1372.5115161247593,\n    \"reoffer_coupon_spread\": 1704.165472011062,\n    \"reoffer_spread_to_benchmark\": 9937.613618908586,\n    \"reoffer_spread_to_mid_swap\": 5056.43883711442,\n    \"reoffer_yield\": 820.301303798876\n  },\n  \"private_placement\": true,\n  \"product_governance\": {\n    \"mifid_manufacturers\": [\n      \"string\",\n      \"string\"\n    ],\n    \"mifir_manufacturers\": [\n      \"string\",\n      \"string\"\n    ],\n    \"target_market\": \"Retail Investors, Professional Investors and ECPs\",\n    \"target_market_verbose\": \"string\"\n  },\n  \"programme\": {\n    \"base_prospectus_date\": \"string\",\n    \"currency\": \"KZT\",\n    \"id\": \"string\",\n    \"limit\": 5739.21511904709,\n    \"name\": \"string\",\n    \"type\": \"GCB\"\n  },\n  \"rating_type\": \"Issue\",\n  \"ratings\": [\n    {\n      \"agency\": \"Moody's\",\n      \"outlook\": \"DEVELOPING\",\n      \"value\": \"Ba2\"\n    },\n    {\n      \"agency\": \"DBRS\",\n      \"outlook\": \"EVOLVING\",\n      \"value\": \"A (high)\"\n    }\n  ],\n  \"redemption\": {\n    \"call_features\": [\n      \"Clean-up Call\",\n      \"Tax Call\"\n    ],\n    \"call_notice_period_days_type\": \"Calendar Days\",\n    \"call_notice_period_min\": 7039,\n    \"call_optional_redemption_price\": 6820.31134175947,\n    \"call_optional_redemption_dates\": [\n      \"string\",\n      \"string\"\n    ],\n    \"call_par_call_term\": 7849,\n    \"clean_up_call_redemption_amount\": 9112.289990120451,\n    \"make_whole_margin\": 8414.104627195835,\n    \"callable_structure\": \"string\",\n    \"change_of_control_put_required\": true,\n    \"early_redemption_event_details\": \"string\",\n    \"maturity_date\": \"string\",\n    \"perpetual\": true,\n    \"price\": 6784.540234883999,\n    \"type\": \"Partial Redemption with reduction\",\n    \"type_iso\": \"PRNR\",\n    \"extended_maturity_date\": \"string\",\n    \"covered_maturity_type\": \"Soft Bullet\",\n    \"underlying\": {\n      \"name\": \"string\",\n      \"type\": \"Other\",\n      \"isin_code\": \"string\"\n    }\n  },\n  \"security_name\": \"string\",\n  \"security_type\": \"Future\",\n  \"selling_restrictions\": \"RLS\",\n  \"seniority\": \"SNDB\",\n  \"series_number\": \"string\",\n  \"series_size\": 6439,\n  \"settlement_date\": \"2024-04-16\",\n  \"settlement_window_business_day_count\": 2791,\n  \"size\": 5491,\n  \"signing_date\": \"1977-04-20\",\n  \"status_of_the_notes\": \"Covered Bonds\",\n  \"time_of_execution\": \"string\",\n  \"tefra_category\": \"RULC\",\n  \"trade_date\": \"1994-05-04\",\n  \"trading_method\": \"UNT\",\n  \"tranche_number\": \"string\",\n  \"use_of_proceeds\": \"string\",\n  \"871m_status\": \"Out of Scope\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "55bc8f7d-7f25-423b-a579-d80c85415294",
+              "name": "Permission denied as the API-Key provided is invalid.\nBe sure to copy/paste the key exactly as provided by Origin.\nIf it still doesn't work, contact Origin support.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "trades",
+                    ":TradeId",
+                    "post-trade-data",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "TradeId",
+                      "description": "(Required) The unique ID of the trade."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "A unique API key used for authentication provided by Origin.\nIf the key is omitted, you will obtain this documentation page as response.\n",
+                    "key": "API-Key",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"Invalid API Key\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "bf82a7be-c360-4acd-9893-e6589e7859b2",
+    "name": "Trades API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Specification for fetching post trade trade data.\nThis endpoint requires a valid API key and will return data based on the key.\n",
+      "type": "text/plain"
+    }
+  }
+}

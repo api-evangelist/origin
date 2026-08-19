@@ -2,10 +2,11 @@ generated: '2026-07-20'
 method: derived
 status: candidate
 source: openapi/origin-airbrush-openapi-original.yml
-note: >
-  Origin does not publish an official hosted or remote MCP server. The tools below are a
-  CANDIDATE surface derived one-per-operation from the Airbrush v3 Trades API OpenAPI, as a
-  starting point for wrapping the read-only API for agent use. Not an endorsed or live server.
+note: 'Origin does not publish an official hosted or remote MCP server. The tools below are a CANDIDATE
+  surface derived one-per-operation from the Airbrush v3 Trades API OpenAPI, as a starting point for wrapping
+  the read-only API for agent use. Not an endorsed or live server.
+
+  '
 server:
   name: origin-trades
   transport: http
@@ -20,3 +21,9 @@ tools:
 - name: get_trade_post_trade_data
   description: Return the post-trade data for a trade by TradeId.
   source_operation: openapi/origin-airbrush-openapi-original.yml#get /trades/{TradeId}/post-trade-data/
+deployment:
+  mode: none
+  verified: derived
+  tools: 3
+  checked: '2026-08-12'
+  source: catalog MCP census

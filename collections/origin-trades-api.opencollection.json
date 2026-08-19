@@ -1,0 +1,85 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Trades API",
+    "version": "3.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Trades",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Returns a list of JSON objects of the trades that you have access to.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/trades/",
+            "headers": [
+              {
+                "name": "API-Key",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Returns a list of JSON objects of the trades that you have access to."
+        },
+        {
+          "info": {
+            "name": "Returns a JSON object containing the termsheet data for the trade with\nthe given id, provided you have access to it.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/trades/:TradeId/termsheet-data/",
+            "headers": [
+              {
+                "name": "API-Key",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "TradeId",
+                "value": "",
+                "type": "path",
+                "description": "The unique ID of the trade."
+              }
+            ]
+          },
+          "docs": "Returns a JSON object containing the termsheet data for the trade with\nthe given id, provided you have access to it.\n"
+        },
+        {
+          "info": {
+            "name": "Returns a JSON object containing the post trade data for the trade with\nthe given id, provided you have access to it.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/trades/:TradeId/post-trade-data/",
+            "headers": [
+              {
+                "name": "API-Key",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "TradeId",
+                "value": "",
+                "type": "path",
+                "description": "The unique ID of the trade."
+              }
+            ]
+          },
+          "docs": "Returns a JSON object containing the post trade data for the trade with\nthe given id, provided you have access to it.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
