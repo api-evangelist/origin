@@ -1,0 +1,26 @@
+slug: origin
+provider: Origin
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Banking & Capital Markets
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: Trades
+  spec_file: origin-trades-api-openapi.yml
+  capability_id: BC-1380
+  capability_id_l1: BC-1380
+  capability_name: Capital Markets Operations Management
+  confidence: 0.7
+  evidence: '"Specification for fetching post trade trade data"; GET /trades/{TradeId}/post-trade-data/
+    and /termsheet-data/; schemas Clearing, Denominations, SecurityType'
+  reason: Debt capital markets bond issuance trade records with post-trade and termsheet data plus clearing/security
+    schemas sit in Capital Markets Operations; evidence does not cleanly name a single sub-capability
+    (confirmation vs clearing/settlement).

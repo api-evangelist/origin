@@ -89,6 +89,9 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: CapabilityMap
+  url: capabilities/origin-capability-edges.yml
+  name: Origin Business Capability Map
 - type: MCPServer
   url: mcp/origin-mcp.yml
 - type: DomainSecurity
