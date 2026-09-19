@@ -72,6 +72,8 @@ apis:
   humanURL: https://airbrush.originmarkets.com/v3/
   baseURL: https://airbrush.originmarkets.com/v3
   tags:
+  - Trade
+  tags_raw:
   - Trades
   properties:
   - type: OpenAPI
