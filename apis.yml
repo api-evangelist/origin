@@ -44,7 +44,7 @@ created: '2026-07-17'
 modified: '2026-07-20'
 tags:
 - Company
-- Financial-Services
+- Financial Services
 - Capital Markets
 - Bond Issuance
 - Debt Capital Markets
@@ -64,6 +64,7 @@ tags_raw:
 - ISO 20022
 - FinTech
 - Straight-Through Processing
+- Financial-Services
 image: https://originmarkets.com/universal/svg/social-accounts.svg
 apis:
 - aid: origin:origin-trades-api
