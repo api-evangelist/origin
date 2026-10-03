@@ -142,12 +142,144 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    Status871m:
+      type: string
+      enum:
+      - In Scope
+      - Out of Scope
+      - Not Applicable
+    SellingRestrictions:
+      type: string
+      enum:
+      - 3 (c) 7
+      - Reg S
+      - 144A
+      - RLS
     TefraCategoryISO:
       type: string
       enum:
       - NOT_APP
       - RULC
       - RULD
+    IssuanceCategory:
+      type: string
+      enum:
+      - General Corporate Purposes
+      - Green Bonds
+      - Social Bonds
+      - Sustainable Bonds
+    Fungible:
+      type: object
+      properties:
+        fungibility_status:
+          type: string
+          description: Whether the notes are immediately fungible or funge after a given period of time. Mandatory where the notes are fungible.
+          enum:
+          - Immediately fungible
+          - Fungible 40 days after Tap Settlement Date
+        accrued_interest_days:
+          type: integer
+          description: The number of days of accrued interest.
+        accrued_interest_notional:
+          type: integer
+          description: The amount of accrued interest.
+        funge_date:
+          type: string
+          description: Date on which the daughter code will funge with the mother code. ISO 8601 date format YYYY-MM-DD. Mandatory for tap issuances which do not funge immediately.
+        new_total_size:
+          type: integer
+          description: The aggregate nominal amount of the series after the issue of the current tranche. Mandatory if the tranche being issued is a tap of an existing series.
+        original_size:
+          type: integer
+          description: The aggregate nominal amount of the series before the issue of the current tranche. Mandatory if the tranche being issued is a tap of an existing series.
+        cfi_code:
+          type: string
+          pattern: ^[A-Z]{6}$
+          description: The CFI (ISO 10962, 6 letters) is assigned with the ISIN by the numbering agency. Conditional based on issuer requirements.
+        cins_code:
+          type: string
+          pattern: ^[0-9A-Z]{9}$
+          description: A CINS number is an extension to the CUSIP numbering system, which is used to uniquely identify securities offered outside of the United States and Canada. Just as with CUSIP numbers, the CINS number consists of nine characters.
+        cmu_code:
+          type: string
+          pattern: ^[A-Z]{6}[0-9]{5}$
+          description: The CMU code is used by Hong Kong Monetary Authority to provide computerised clearing and settlement facilities for Exchange Fund Bills and Notes.
+        common_code:
+          type: string
+          pattern: ^[0-9A-Z]{9}$
+          description: A 9-digit number used to uniquely identify individual securities between the ICSDs and their participants, and allocated by either of the ICSDs.
+        cusip_code:
+          type: string
+          pattern: ^[0-9A-Z]{9}$
+          description: Unique 9 digit alpha-numeric identification code assigned to stocks and registered bonds in the United States and Canada. It comprises nine letters and includes letters and numbers.
+        isin_code:
+          type: string
+          pattern: ^[A-Z]{2}[0-9A-Z]{9}[0-9]$
+          description: A 12-digit security identification code (ISO 6166) comprised of a 2-digit ISO 3166 country code, a 9-digit national number and a 1-digit 'check number'.
+        fisn_code:
+          type: string
+          pattern: ^(?=.{1,35}$)(?:((?:[^/]){1,15})/([^/]+))$
+          description: A FISN is an ISO 18774 standard that encompasses an issuer of securities' short name. The FISN is an abbreviated version of the long company name and can only be up to 15 characters in length.
+        sedol_code:
+          type: string
+          pattern: ^[0-9A-Z]{7}$
+          description: Unique seven-character alphanumeric identifiers assigned to securities that trade on the London Stock Exchange and other smaller exchanges in the United Kingdom. SEDOL codes have a unique checksum character assigned at the end. The seventh digit is a weighted sum of the first six characters.
+        valoren_code:
+          type: string
+          pattern: ^[0-9]{6,9}$
+          description: VALOR number is a code which uniquely identifies listed securities and financial instruments in Switzerland.
+        wkn_code:
+          type: string
+          pattern: ^[0-9A-HJ-NP-Z]{6}$
+          description: German six-digit alphanumerical code for the identification of a security
+    TradingMethod:
+      type: string
+      enum:
+      - FMT
+      - UNT
+    Identifiers:
+      type: object
+      properties:
+        cfi_code:
+          type: string
+          pattern: ^[A-Z]{6}$
+          description: The CFI (ISO 10962, 6 letters) is assigned with the ISIN by the numbering agency. Conditional based on issuer requirements.
+        cins_code:
+          type: string
+          pattern: ^[0-9A-Z]{9}$
+          description: A CINS number is an extension to the CUSIP numbering system, which is used to uniquely identify securities offered outside of the United States and Canada. Just as with CUSIP numbers, the CINS number consists of nine characters.
+        cmu_code:
+          type: string
+          pattern: ^[A-Z]{6}[0-9]{5}$
+          description: The CMU code is used by Hong Kong Monetary Authority to provide computerised clearing and settlement facilities for Exchange Fund Bills and Notes.
+        common_code:
+          type: string
+          pattern: ^[0-9A-Z]{9}$
+          description: A 9-digit number used to uniquely identify individual securities between the ICSDs and their participants, and allocated by either of the ICSDs.
+        cusip_code:
+          type: string
+          pattern: ^[0-9A-Z]{9}$
+          description: Unique 9 digit alpha-numeric identification code assigned to stocks and registered bonds in the United States and Canada. It comprises nine letters and includes letters and numbers.
+        isin_code:
+          type: string
+          pattern: ^[A-Z]{2}[0-9A-Z]{9}[0-9]$
+          description: A 12-digit security identification code (ISO 6166) comprised of a 2-digit ISO 3166 country code, a 9-digit national number and a 1-digit 'check number'.
+        fisn_code:
+          type: string
+          pattern: ^(?=.{1,35}$)(?:((?:[^/]){1,15})/([^/]+))$
+          description: A FISN is an ISO 18774 standard that encompasses an issuer of securities' short name. The FISN is an abbreviated version of the long company name and can only be up to 15 characters in length.
+        sedol_code:
+          type: string
+          pattern: ^[0-9A-Z]{7}$
+          description: Unique seven-character alphanumeric identifiers assigned to securities that trade on the London Stock Exchange and other smaller exchanges in the United Kingdom. SEDOL codes have a unique checksum character assigned at the end. The seventh digit is a weighted sum of the first six characters.
+        valoren_code:
+          type: string
+          pattern: ^[0-9]{6,9}$
+          description: VALOR number is a code which uniquely identifies listed securities and financial instruments in Switzerland.
+        wkn_code:
+          type: string
+          pattern: ^[0-9A-HJ-NP-Z]{6}$
+          description: German six-digit alphanumerical code for the identification of a security
     Programme:
       type: object
       properties:
@@ -249,6 +381,80 @@ components:
           - SSD
           - RCB
           description: Type of the programme under which the securities are issued as appearing on cover page. Optional, to be provided where possible to aid identification of the programme.
+    Agents:
+      type: object
+      properties:
+        determination_agent:
+          type: object
+          properties:
+            name:
+              type: string
+              description: The name of the determination agent. Mandatory if a determination agent is required for the notes.
+        calculation_agent:
+          type: object
+          properties:
+            name:
+              type: string
+              description: An agent appointed by the issuer to process and disseminate coupon rate fixing or redemption information and to determine the amount payable under a security. Mandatory if a calculation agent is required.
+        issuing_agent:
+          type: object
+          properties:
+            name:
+              type: string
+              description: An agent appointed by the issuer to issue securities to the market and receive corresponding payments, if applicable, from the Dealer on the Issue Date. Mandatory.
+        paying_agent:
+          type: object
+          properties:
+            name:
+              type: string
+              description: An agent appointed by the issuer to make payments relating to lifecycle events on the security. Mandatory.
+        registrar:
+          type: object
+          properties:
+            name:
+              type: string
+              description: An entity appointed by the Issuer to maintain the register of holders where notes are in registered form. Mandatory for Registered Notes.
+    GoverningLaw:
+      type: string
+      enum:
+      - AT
+      - BE
+      - DK
+      - NL
+      - GB
+      - FI
+      - FR
+      - DE
+      - HK
+      - IE
+      - LU
+      - US
+      - 'NO'
+      - SE
+      - CH
+    IssuanceType:
+      type: string
+      enum:
+      - BPRO
+      - STDA
+    UnderlyingObject:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the underlying on which the interest parameters are dependent. Mandatory if the issuance has interest parameters dependent on an underlying.
+        type:
+          type: string
+          enum:
+          - Equity
+          - Index
+          - Credit
+          - CMS
+          - Other
+          description: Type of the underlying on which the interest parameters are dependent. Mandatory if the issuance has interest parameters dependent on an underlying.
+        isin_code:
+          type: string
+          description: ISIN of the underlying on which the interest parameters are dependent. Mandatory when the underlying redemption basis has an ISIN code.
     Ratings:
       type: object
       properties:
@@ -332,51 +538,53 @@ components:
           - Caa3
           - D
           - NR
-    MethodOfDistribution:
+    RatingType:
       type: string
       enum:
-      - SYND
-      - NSYN
-    Pricing:
+      - Issue
+      - Product
+      - Unrated
+    Listing:
       type: object
       properties:
-        accrual_quotation_type:
+        name:
           type: string
           enum:
-          - CLEAN
-          - DIRTY
-          - NOT_APP
-          description: Indicates whether acrued interest is included or excluded from prices on the transaction. Mandatory.
-        all_in_issuer_spread_vs_benchmark:
-          type: number
-          description: The all-in issuer spread of the bond to be issued over the benchmark reference.
-        benchmark_reference:
+          - Berlin Stock Exchange
+          - Euronext Amsterdam
+          - Euronext Brussels
+          - Euronext Dublin
+          - Euronext Lisbon
+          - Euronext Paris
+          - ExtraMOT
+          - Frankfurt Stock Exchange
+          - Helsinki Stock Exchange
+          - Hong Kong Stock Exchange
+          - Labuan International Financial Exchange
+          - London Stock Exchange
+          - Luxembourg Stock Exchange
+          - Munich Stock Exchange
+          - Nasdaq Copenhagen A/S
+          - Nasdaq Stockholm
+          - Oslo Stock Exchange
+          - SIX
+          - Singapore SGX
+          - Stuttgart
+          - Taipei Exchange
+          - Trace
+          - Vienna Stock Exchange
+          description: Exchange where the bonds are to be listed. Mandatory if listing is required.
+        market_type:
           type: string
-          description: The benchmark being used as a reference security for pricing purposes. Optional for benchmark transactions with a fixed rate component.
-        benchmark_reference_yield:
-          type: number
-          description: The yield of the benchmark being used as a reference security for pricing purposes. Optional for benchmark transactions with a fixed rate component.
-        commission_percentage:
-          type: number
-          description: The commission percentage paid to the dealer(s) for this transaction. Mandatory if an explicit commission is being charged for this issuance.
-        issue_price:
-          type: number
-          description: The issuance (i.e. closing date) issue price of the security expressed in percentage. For benchmark issuance this is the re-offer price. Mandatory.
-        mid_swap_yield:
-          type: number
-          description: The yield of the benchmark being used as a reference security for pricing purposes. Optional for benchmark transactions with a fixed rate component.
-        reoffer_coupon_spread:
-          type: number
-          description: The yield spread between the reference security/rate being used as the basis for pricing the floating rate note and the security to be issued. Mandatory for benchmark transactions with a floating rate component.
-        reoffer_spread_to_benchmark:
-          type: number
-          description: The yield of the benchmark being used as a reference security for pricing purposes. Optional for benchmark transactions with a fixed rate component.
-        reoffer_spread_to_mid_swap:
-          type: number
-          description: The yield of the benchmark being used as a reference security for pricing purposes. Optional for benchmark transactions with a fixed rate component.
-        reoffer_yield:
-          type: number
-          description: The yield of the benchmark being used as a reference security for pricing purposes. Optional for benchmark transactions with a fixed rate component.
+          enum:
+          - RMKT
+          - RMQI
+          - MSGM
+          - MLTF
+          description: The market of the exchange where the bond is to be listed. Mandatory if a listing exchange is required, but will default to 'Regulated Market' if not provided.
+        market_mic_code:
+          type: string
+          description: MIC code(s) (ISO standard 10383) of the exchange(s) on which the securities will be listed. Mandatory if listing is required.
     Issuer:
       type: object
       properties:
@@ -654,49 +862,110 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Ratings'
-    Identifiers:
+    OtherProvisions:
       type: object
       properties:
-        cfi_code:
+        events_of_default:
           type: string
-          pattern: ^[A-Z]{6}$
-          description: The CFI (ISO 10962, 6 letters) is assigned with the ISIN by the numbering agency. Conditional based on issuer requirements.
-        cins_code:
+          description: Describes any relevant events of default relating to the notes. Mandatory if the issuer requires this information to specified additional beyond what is covered in the Terms and Conditions.
+        negative_pledge_details:
           type: string
-          pattern: ^[0-9A-Z]{9}$
-          description: A CINS number is an extension to the CUSIP numbering system, which is used to uniquely identify securities offered outside of the United States and Canada. Just as with CUSIP numbers, the CINS number consists of nine characters.
-        cmu_code:
+          description: Describes whether a negative pledge is applicable for the notes. Mandatory if the issuer requires this information to specified additional beyond what is covered in the Terms and Conditions.
+    Redemption:
+      type: object
+      properties:
+        call_features:
+          type: array
+          items:
+            type: string
+            enum:
+            - Make-Whole Redemption
+            - Par Call
+            - M&amp;A Call
+            - Clean-up Call
+            - Tax Call
+            - None
+          description: List of the issuer's redemption features associated with the bond. Mandatory at the Termsheet stage (can be 'None'); required at Post Trade only if specified in the Form of Final Terms.
+        call_notice_period_days_type:
           type: string
-          pattern: ^[A-Z]{6}[0-9]{5}$
-          description: The CMU code is used by Hong Kong Monetary Authority to provide computerised clearing and settlement facilities for Exchange Fund Bills and Notes.
-        common_code:
+          description: When an issuer call option is present, this specifies whether the notice period is defined in calendar days or business days. Mandatory if an issuer call is present.
+          enum:
+          - Business Days
+          - Calendar Days
+        call_notice_period_min:
+          type: integer
+          description: Notice period which the option holder is required to give the counterparty before redemptin in whole business days. Mandatory if an issuer call is applicable.
+        call_optional_redemption_price:
+          type: number
+          description: Price at which the bond will be redeemed if the call option is exercised. Mandatory if an issuer call is applicable and the optional redemption value is to be expressed as a price.
+        call_optional_redemption_dates:
+          type: array
+          items:
+            type: string
+          description: Date(s) on which the call option on the bond can be exercised by the issuer. ISO 8601 date format YYYY-MM-DD. Mandatory if an issuer call is applicable.
+        call_par_call_term:
+          type: integer
+          description: The period in months before the maturity date within which the Par Call can be exercised by the issuer. Mandatory if a Par Call is specified within redemption.call_features.
+        clean_up_call_redemption_amount:
+          type: number
+          description: The amount of the outstanding notes of a series which the issuer needs to own in order to exercise the Clean-up Call, expressed as a percentage. Mandatory if a Clean-up Call is specified within redemption.call_features.
+        make_whole_margin:
+          type: number
+          description: The margin over the benchmark security which the issuer would need to pay to redeem the security under the Make Whole Redemption Option. Mandatory if a Make-Whole Redemption is specified within redemption.call_features.
+        callable_structure:
           type: string
-          pattern: ^[0-9A-Z]{9}$
-          description: A 9-digit number used to uniquely identify individual securities between the ICSDs and their participants, and allocated by either of the ICSDs.
-        cusip_code:
+          description: The structure of the callable note, describing the tenor, non-call period and the optional redemption frequency after the initial call if applicable. Mandatory for callable notes.
+        change_of_control_put_required:
+          type: boolean
+          description: Indicates whether a Change of Control Put Option is applicable. Mandatory.
+        early_redemption_event_details:
           type: string
-          pattern: ^[0-9A-Z]{9}$
-          description: Unique 9 digit alpha-numeric identification code assigned to stocks and registered bonds in the United States and Canada. It comprises nine letters and includes letters and numbers.
-        isin_code:
+          description: Specifies any relevant early redemption details. Mandatory for Senior Non-Preferred issuance.
+        maturity_date:
           type: string
-          pattern: ^[A-Z]{2}[0-9A-Z]{9}[0-9]$
-          description: A 12-digit security identification code (ISO 6166) comprised of a 2-digit ISO 3166 country code, a 9-digit national number and a 1-digit 'check number'.
-        fisn_code:
+          description: Planned final repayment date known at the time of issuance. ISO 8601 date format YYYY-MM-DD. Mandatory for all issues which are not perpetual.
+        perpetual:
+          type: boolean
+          description: Whether the securities have a maturity date or are issued in perpetual form. Mandatory.
+        price:
+          type: number
+          description: Code used to specify the percentage or price payable per denomination, i.e. at par, above par or below par. Expressed in % for issues in Nominal form, in Amount for issues in Unit form. Mandatory.
+        type:
           type: string
-          pattern: ^(?=.{1,35}$)(?:((?:[^/]){1,15})/([^/]+))$
-          description: A FISN is an ISO 18774 standard that encompasses an issuer of securities' short name. The FISN is an abbreviated version of the long company name and can only be up to 15 characters in length.
-        sedol_code:
+          description: Indicates the type of redemption (at maturity , final redemption, before maturity , partial redemption, call or put). Mandatory.
+          enum:
+          - Final Redemption
+          - Partial Redemption without reduction
+          - Partial Redemption with reduction
+          - Drawing at random
+          - Drawing pro-rata
+          - Redemption in shares
+          - Call
+          - Put
+        type_iso:
           type: string
-          pattern: ^[0-9A-Z]{7}$
-          description: Unique seven-character alphanumeric identifiers assigned to securities that trade on the London Stock Exchange and other smaller exchanges in the United Kingdom. SEDOL codes have a unique checksum character assigned at the end. The seventh digit is a weighted sum of the first six characters.
-        valoren_code:
+          description: ISO 20022 MaturityRedemptionType1Code code which indicates the type of redemption (Final Redemption, Partial Redemption without reduction, Partial Redemption with reduction, Drawing at random, Drawing pro-rata, Call, Put). Mandatory.
+          enum:
+          - FRED
+          - PRNR
+          - PRWR
+          - RNDM
+          - PRRA
+          - OTHR
+          - CALL
+          - PUUT
+        extended_maturity_date:
           type: string
-          pattern: ^[0-9]{6,9}$
-          description: VALOR number is a code which uniquely identifies listed securities and financial instruments in Switzerland.
-        wkn_code:
+          description: The Extended Final Maturity Date at the end of the extended period where the issuance is subject to a potential coupon extension. Mandatory for Covered Bonds with a Soft Bullet maturity type.
+        covered_maturity_type:
           type: string
-          pattern: ^[0-9A-HJ-NP-Z]{6}$
-          description: German six-digit alphanumerical code for the identification of a security
+          enum:
+          - Hard Bullet
+          - Soft Bullet
+          - Conditional Pass-Through
+          description: For Covered Bonds, indicates whether the maturity of the issue can be extended (Soft Bullet or Conditional Pass-Through) or not (Hard Bullet). Mandatory for Covered Bonds.
+        underlying:
+          $ref: '#/components/schemas/UnderlyingObject'
     SecurityType:
       type: string
       enum:
@@ -709,636 +978,6 @@ components:
       - Certificate
       - Warrant
       - Other
-    CouponTypeISO:
-      type: string
-      enum:
-      - FIXD
-      - FLRN
-      - ZCPN
-      - OTHR
-    Clearing:
-      type: object
-      properties:
-        clearing_system:
-          type: array
-          description: The clearing system(s) which will be used to clear the trade. Mandatory.
-          items:
-            type: string
-            enum:
-            - Euroclear/Clearstream
-            - Euroclear France
-            - CMU
-            - CMU with link to Euroclear/Clearstream
-            - VPS
-            - Clearstream Luxembourg
-            - Euroclear Belgium
-            - Euroclear Netherlands
-            - OeKB CSD GmbH
-            - Clearstream Banking Frankfurt
-            - National Bank of Belgium
-            - VP Securities A/S
-            - DTC
-            - Clearstream Frankfurt
-        dealer_clearing_house:
-          type: string
-          description: Clearing house used by the billing and delivery dealer/manager for the distribution of funds. Mandatory at the Post Trade stage.
-          enum:
-          - Euroclear/Clearstream
-          - Euroclear France
-          - CMU
-          - CMU with link to Euroclear/Clearstream
-          - VPS
-          - Clearstream Luxembourg
-          - Euroclear Belgium
-          - Euroclear Netherlands
-          - OeKB CSD GmbH
-          - Clearstream Banking Frankfurt
-          - National Bank of Belgium
-          - VP Securities A/S
-          - DTC
-          - Clearstream Frankfurt
-        dealer_account:
-          type: string
-          description: Clearing house account 5 digit number used by the billing and delivery dealer/managers for the distribution of funds. Mandatory at the Post Trade stage.
-          enum:
-          - Euroclear/Clearstream
-          - Euroclear France
-          - CMU
-          - CMU with link to Euroclear/Clearstream
-          - VPS
-          - Clearstream Luxembourg
-          - Euroclear Belgium
-          - Euroclear Netherlands
-          - OeKB CSD GmbH
-          - Clearstream Banking Frankfurt
-          - National Bank of Belgium
-          - VP Securities A/S
-          - DTC
-          - Clearstream Frankfurt
-        issuer_clearing_house:
-          type: string
-          description: Clearing house used by the issuer for the receipt of funds. Mandatory at the Post Trade stage.
-          enum:
-          - Euroclear/Clearstream
-          - Euroclear France
-          - CMU
-          - CMU with link to Euroclear/Clearstream
-          - VPS
-          - Clearstream Luxembourg
-          - Euroclear Belgium
-          - Euroclear Netherlands
-          - OeKB CSD GmbH
-          - Clearstream Banking Frankfurt
-          - National Bank of Belgium
-          - VP Securities A/S
-          - DTC
-          - Clearstream Frankfurt
-        issuer_account:
-          type: string
-          description: Clearing system account 5 digit number used by the issuer for the receipt of funds. Mandatory at the Post Trade stage.
-        delivery:
-          type: string
-          enum:
-          - Delivery versus payment
-          - Delivery free of payment
-          description: Delivery versus payment (DVP) is a securities industry settlement method that guarantees the transfer of securities only happens after payment has been made. Delivery free of payment (FOP) settlement involves delivery of the securities without a prior/simultaneous (or in some cases any) transfer of funds. Mandatory.
-    GoverningLaw:
-      type: string
-      enum:
-      - AT
-      - BE
-      - DK
-      - NL
-      - GB
-      - FI
-      - FR
-      - DE
-      - HK
-      - IE
-      - LU
-      - US
-      - 'NO'
-      - SE
-      - CH
-    SellingRestrictions:
-      type: string
-      enum:
-      - 3 (c) 7
-      - Reg S
-      - 144A
-      - RLS
-    TradeDataAPIResponse:
-      type: object
-      properties:
-        agents:
-          type: object
-          $ref: '#/components/schemas/Agents'
-        bond_fallback_provisions:
-          type: string
-          description: Specifies any fallback provisions associated with the bond. Mandatory if fallback provisions are required.
-        clearing:
-          type: object
-          $ref: '#/components/schemas/Clearing'
-        confidential:
-          type: boolean
-          description: Indicates whether the details of the security are to be made available to the market, or kept private by the ICSDs and agent(s). Will only be provided if the information is available.
-        currency:
-          type: object
-          $ref: '#/components/schemas/CurrencyObject'
-        dealers:
-          type: array
-          items:
-            type: object
-            $ref: '#/components/schemas/Dealer'
-        denominations:
-          type: array
-          items:
-            type: object
-            $ref: '#/components/schemas/Denominations'
-        ecb_eligible:
-          type: boolean
-          description: Flag to indicate the security is intended to be held in a manner that could allow the Eurosystem Eligibility. Mandatory for NGN or for CGN if under the New Safekeeping Structure (NSS).
-        form:
-          type: object
-          $ref: '#/components/schemas/Form'
-        fungible:
-          type: object
-          $ref: '#/components/schemas/Fungible'
-        guarantors:
-          type: array
-          items:
-            type: object
-            $ref: '#/components/schemas/Guarantor'
-        governing_law:
-          allOf:
-          - $ref: '#/components/schemas/GoverningLaw'
-          - description: Jurisdiction (country, county, state, province, city) of the issue. Mandatory.
-        identifiers:
-          type: object
-          $ref: '#/components/schemas/Identifiers'
-        interest:
-          type: object
-          $ref: '#/components/schemas/Interest'
-        issuance_category:
-          allOf:
-          - $ref: '#/components/schemas/IssuanceCategory'
-          - description: Denotes whether the use of proceeds relates to general corporate purposes or is to be applied to a specific ESG-related purpose. Mandatory.
-        issuance_type:
-          allOf:
-          - $ref: '#/components/schemas/IssuanceType'
-          - description: Indicates whether the securities are being issued under a programme or on a standalone basis. Mandatory.
-        is_fungible:
-          type: boolean
-          description: It indicates if the security (daughter code) is to be fungible with an original tranche (mother code). Mandatory.
-        issuers:
-          type: array
-          items:
-            type: object
-            $ref: '#/components/schemas/Issuer'
-        listings:
-          type: object
-          properties:
-            date:
-              type: string
-              format: date
-              description: Date on which the bonds are intended to be listed (typically the settlement date but may be different). ISO 8601 date format YYYY-MM-DD. Mandatory if listing is required.
-            exchanges:
-              type: array
-              items:
-                type: object
-                $ref: '#/components/schemas/Listing'
-        method_of_distribution:
-          allOf:
-          - $ref: '#/components/schemas/MethodOfDistribution'
-          - description: The way in which the issue will be marketed to the primary market, via individual dealers (so called non syndicated distribution) or via a syndicate of managers, underwriters and selling group members (so called syndicated distribution). Mandatory.
-        net_proceeds:
-          type: number
-          description: The proceeds of the transaction due to the issuer on the settlement date. Mandatory.
-        other_provisions:
-          type: object
-          $ref: '#/components/schemas/OtherProvisions'
-        pricing:
-          type: object
-          $ref: '#/components/schemas/Pricing'
-        private_placement:
-          type: boolean
-          description: 'Indicates whether the issuance is a private placement or not. Mandatory.
-
-            '
-        product_governance:
-          type: object
-          $ref: '#/components/schemas/ProductGovernance'
-        programme:
-          type: object
-          $ref: '#/components/schemas/Programme'
-        rating_type:
-          allOf:
-          - $ref: '#/components/schemas/RatingType'
-          - description: Whether the band will be explicitly rated (Issue rating), whether a rating in line with other bonds of the same seniority issued under the programme will be specified in the final terms (Product rating) or whether the bonds will be explicitly unrated (Unrated). Mandatory
-        ratings:
-          type: array
-          items:
-            type: object
-            $ref: '#/components/schemas/Ratings'
-        redemption:
-          type: object
-          $ref: '#/components/schemas/Redemption'
-        security_name:
-          type: string
-          description: 'Description of the financial instrument in the form: "currency.notional+size+interest.type+status_of_the_notes Notes". Mandatory.'
-        security_type:
-          allOf:
-          - $ref: '#/components/schemas/SecurityType'
-          - description: Indicates the type of security to be issued. Mandatory.
-        selling_restrictions:
-          allOf:
-          - $ref: '#/components/schemas/SellingRestrictions'
-          - description: Requirements on the Issuer/Manager/Noteholders on the selling of the securities in the market. Mandatory.
-        seniority:
-          allOf:
-          - $ref: '#/components/schemas/Seniority'
-          - description: Seniority of the bond. Mandatory.
-        series_number:
-          type: string
-          description: Identifies the series number. Mandatory if the issuer uses series numbers.
-        series_size:
-          type: integer
-          description: For fungible issues, identifies the total nominal amount of the issued securities after inclusion of the tranche being issued. For non-fungible issues this is the tranche total nominal amount. Mandatory for MTN issuance.
-        settlement_date:
-          type: string
-          format: date
-          description: The date on which issue’s proceeds are paid to the issuer and securities are created and distributed to investors (primary distribution/settlement). ISO 8601 date format YYYY-MM-DD. Mandatory.
-        settlement_window_business_day_count:
-          type: integer
-          description: The number of days representing the time between the trade date and settlement date. Mandatory.
-        size:
-          type: integer
-          description: Total nominal amount of the tranche issued. Mandatory.
-        signing_date:
-          type: string
-          format: date
-          description: The date on which the final terms / offering documentation is signed. Mandatory.
-        status_of_the_notes:
-          allOf:
-          - $ref: '#/components/schemas/ProductType'
-          - description: Indicates the seniority of the notes (included alongside seniority as it enables the differentiation beween Senior Preferred/Senior Non-Preferred). Mandatory.
-        time_of_execution:
-          type: string
-          description: Time of execution, expressed with a location to provide a timezone (e.g. 11am Brussels time). Mandatory if the transaction requires a time of execution.
-        tefra_category:
-          allOf:
-          - $ref: '#/components/schemas/TefraCategoryISO'
-          - description: Indicates the TEFRA rule under which the security is issued. This uses the ISO 20022 code where TEFRA category is C or D. If a TEFRA category is not explicitly mentioned, this will be defaulted to NOT_APP. Mandatory.
-        trade_date:
-          type: string
-          format: date
-          description: Date on which the transaction was executed for private placements; pricing date for benchmark transactions. ISO 8601 date format YYYY-MM-DD. Mandatory.
-        trading_method:
-          allOf:
-          - $ref: '#/components/schemas/TradingMethod'
-          - description: Indicates whether the notional amount value is to be traded in either an amount or a unit. Mandatory.
-        tranche_number:
-          type: string
-          description: Indicates the number of the tranche. Mandatory if the issuer uses tranche numbers.
-        use_of_proceeds:
-          type: string
-          description: The use of the proceeds of the issuance. Mandatory if the issuer indicates a use of proceeds.
-        871m_status:
-          allOf:
-          - $ref: '#/components/schemas/Status871m'
-          - description: Denotes whether the securities to be issued are in scope of US Regulation 871m. Mandatory.
-      example:
-        agents:
-          issuing_agent:
-            name: Citibank N.A., London Branch
-          paying_agent:
-            name: Citibank N.A., London Branch
-        clearing:
-          clearing_system: Euroclear/Clearstream
-        currency:
-          notional: EUR
-        dealers:
-        - name: Crédit Agricole Corporate and Investment Bank
-          country: ''
-          lei: ''
-          role: Sole Manager
-          is_settlement_manager: true
-          is_stabilising_manager: false
-        denominations:
-        - min_denom: 100000
-        form:
-          form_of_the_notes: Bearer
-        identifiers:
-          isin_code: XS1231231231
-          cfi_code: null
-          fisn_code: null
-          cins_code: null
-          valoren_code: null
-          sedol_code: null
-          wkn_code: null
-          common_code: '123123123'
-          cusip_code: null
-          cmu_code: null
-        interest:
-          first_interest_payment_date: '2022-07-21'
-          initial_stub_type: None
-          last_stub_type: None
-          periods:
-          - type: Fixed Rate
-            type_iso: FIXD
-            business_days_for_payment:
-            - TARGET2
-            business_days_for_payment_iso:
-            - OTHR
-            business_day_adjustment: Unadjusted
-            business_day_convention: Following
-            business_day_convention_iso: FWNG
-            day_count_fraction: Actual/Actual (ICMA)
-            day_count_fraction_iso: A006
-            underlying: []
-            annual_interest_payment_dates:
-            - 07-21
-            payment_frequency: Annually
-            fixed_rate: '2.0000'
-        issuers:
-        - name: Vasakronan
-          country: Åland Islands
-          ratings:
-          - agency: Fitch
-            outlook: N/A
-            value: NR
-          - agency: Moodys
-            outlook: STABLE
-            value: A3
-          - agency: S&P
-            outlook: N/A
-            value: NR
-          lei: 5493007LNZSEWN5KTV42
-          type: Corporate
-        other_provisions: {}
-        pricing:
-          issue_price: '100.000000'
-          accrual_quotation_type: CLEAN
-        product_governance:
-          target_market: Professional investors and ECPs
-        programme:
-          type: EMTN
-          name: EMTN (EUR 5.00bn updated 14-Jan-2021)
-          base_prospectus_date: '2021-01-14'
-          limit: 5.0
-          currency: EUR
-          id: '000013730'
-        redemption:
-          call_features: None
-          type: Final Redemption
-          type_iso: FRED
-          price: '100.00000'
-          perpetual: false
-          underlying: []
-          maturity_date: '2026-07-21'
-          change_of_control_put_required: true
-        listings:
-          date: '2021-07-21'
-          exchanges:
-          - name: Euronext Dublin
-            market_type: RMKT
-            market_mic_code: ''
-        is_fungible: false
-        is_listed: true
-        method_of_distribution: NSYN
-        ecb_eligible: false
-        governing_law: English
-        net_proceeds: '100000000.00'
-        private_placement: true
-        rating_type: Unrated
-        status_of_the_notes: Senior Unsecured
-        security_name: Vasakronan EUR100,000,000 5Y Fixed Rate Senior Unsecured EMTN
-        security_type: MTN
-        selling_restrictions: Reg S
-        settlement_date: '2021-07-21'
-        size: 100000000
-        seniority: SNBD
-        tefra_category: RULD
-        trade_date: '2021-07-14'
-        issuance_type: BPRO
-        trading_method: FMT
-        confidential: true
-        871m_status: Not Applicable
-        use_of_proceeds: General corporate purposes
-    OtherProvisions:
-      type: object
-      properties:
-        events_of_default:
-          type: string
-          description: Describes any relevant events of default relating to the notes. Mandatory if the issuer requires this information to specified additional beyond what is covered in the Terms and Conditions.
-        negative_pledge_details:
-          type: string
-          description: Describes whether a negative pledge is applicable for the notes. Mandatory if the issuer requires this information to specified additional beyond what is covered in the Terms and Conditions.
-    Documentations:
-      type: array
-      items:
-        type: string
-        enum:
-        - GMTN
-        - EMTN
-        - GIP
-        - DIP
-        - NeuMTN
-        - DMTN
-        - OP
-        - EMTN &amp; CB
-        - GCIMTN &amp; CB
-        - CD
-        - ECD
-        - YCD
-        - DN
-        - GCP
-        - ECP
-        - USCP
-        - NEUCP
-        - TC
-        - CB
-        - GCB
-        - ECB
-        - GMTCN
-        - EMTCN
-        - GRCB
-        - GLCB
-        - ECP &amp; CD
-        - GDIF
-        - NSV
-        - SSD
-        - RCB
-    TradingMethod:
-      type: string
-      enum:
-      - FMT
-      - UNT
-    Status871m:
-      type: string
-      enum:
-      - In Scope
-      - Out of Scope
-      - Not Applicable
-    CurrencyObject:
-      type: object
-      properties:
-        notional:
-          type: string
-          description: 3 letter ISO 4127 code representing the currency of the notional. Mandatory.
-          enum:
-          - USD
-          - EUR
-          - GBP
-          - JPY
-          - CHF
-          - AUD
-          - NZD
-          - CAD
-          - SEK
-          - NOK
-          - HKD
-          - AED
-          - AMD
-          - ARS
-          - BRL
-          - CLP
-          - CNH
-          - CNY
-          - COP
-          - CZK
-          - DKK
-          - EEK
-          - GEL
-          - HUF
-          - IDR
-          - INR
-          - ISK
-          - KGS
-          - KRW
-          - KZT
-          - MXN
-          - MYR
-          - NTD
-          - PEN
-          - PHP
-          - PLN
-          - QAR
-          - RON
-          - RSD
-          - RUB
-          - SGD
-          - TRY
-          - UAH
-          - UYU
-          - UZS
-          - VND
-          - ZAR
-          - ZMK
-        payment:
-          type: string
-          description: 3 letter ISO 4127 code representing the currency in which payment is to be made. Mandatory if the payment currency differs from the notional currency.
-          enum:
-          - USD
-          - EUR
-          - GBP
-          - JPY
-          - CHF
-          - AUD
-          - NZD
-          - CAD
-          - SEK
-          - NOK
-          - HKD
-          - AED
-          - AMD
-          - ARS
-          - BRL
-          - CLP
-          - CNH
-          - CNY
-          - COP
-          - CZK
-          - DKK
-          - EEK
-          - GEL
-          - HUF
-          - IDR
-          - INR
-          - ISK
-          - KGS
-          - KRW
-          - KZT
-          - MXN
-          - MYR
-          - NTD
-          - PEN
-          - PHP
-          - PLN
-          - QAR
-          - RON
-          - RSD
-          - RUB
-          - SGD
-          - TRY
-          - UAH
-          - UYU
-          - UZS
-          - VND
-          - ZAR
-          - ZMK
-        settlement:
-          type: string
-          description: 3 letter ISO 4127 code representing the currency in which the issue will be settled. Mandatory if the settlement currency differs from the notional currency.
-          enum:
-          - USD
-          - EUR
-          - GBP
-          - JPY
-          - CHF
-          - AUD
-          - NZD
-          - CAD
-          - SEK
-          - NOK
-          - HKD
-          - AED
-          - AMD
-          - ARS
-          - BRL
-          - CLP
-          - CNH
-          - CNY
-          - COP
-          - CZK
-          - DKK
-          - EEK
-          - GEL
-          - HUF
-          - IDR
-          - INR
-          - ISK
-          - KGS
-          - KRW
-          - KZT
-          - MXN
-          - MYR
-          - NTD
-          - PEN
-          - PHP
-          - PLN
-          - QAR
-          - RON
-          - RSD
-          - RUB
-          - SGD
-          - TRY
-          - UAH
-          - UYU
-          - UZS
-          - VND
-          - ZAR
-          - ZMK
     Guarantor:
       type: object
       properties:
@@ -1607,368 +1246,132 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Ratings'
-    Fungible:
+    Clearing:
       type: object
       properties:
-        fungibility_status:
+        clearing_system:
+          type: array
+          description: The clearing system(s) which will be used to clear the trade. Mandatory.
+          items:
+            type: string
+            enum:
+            - Euroclear/Clearstream
+            - Euroclear France
+            - CMU
+            - CMU with link to Euroclear/Clearstream
+            - VPS
+            - Clearstream Luxembourg
+            - Euroclear Belgium
+            - Euroclear Netherlands
+            - OeKB CSD GmbH
+            - Clearstream Banking Frankfurt
+            - National Bank of Belgium
+            - VP Securities A/S
+            - DTC
+            - Clearstream Frankfurt
+        dealer_clearing_house:
           type: string
-          description: Whether the notes are immediately fungible or funge after a given period of time. Mandatory where the notes are fungible.
+          description: Clearing house used by the billing and delivery dealer/manager for the distribution of funds. Mandatory at the Post Trade stage.
           enum:
-          - Immediately fungible
-          - Fungible 40 days after Tap Settlement Date
-        accrued_interest_days:
-          type: integer
-          description: The number of days of accrued interest.
-        accrued_interest_notional:
-          type: integer
-          description: The amount of accrued interest.
-        funge_date:
+          - Euroclear/Clearstream
+          - Euroclear France
+          - CMU
+          - CMU with link to Euroclear/Clearstream
+          - VPS
+          - Clearstream Luxembourg
+          - Euroclear Belgium
+          - Euroclear Netherlands
+          - OeKB CSD GmbH
+          - Clearstream Banking Frankfurt
+          - National Bank of Belgium
+          - VP Securities A/S
+          - DTC
+          - Clearstream Frankfurt
+        dealer_account:
           type: string
-          description: Date on which the daughter code will funge with the mother code. ISO 8601 date format YYYY-MM-DD. Mandatory for tap issuances which do not funge immediately.
-        new_total_size:
-          type: integer
-          description: The aggregate nominal amount of the series after the issue of the current tranche. Mandatory if the tranche being issued is a tap of an existing series.
-        original_size:
-          type: integer
-          description: The aggregate nominal amount of the series before the issue of the current tranche. Mandatory if the tranche being issued is a tap of an existing series.
-        cfi_code:
+          description: Clearing house account 5 digit number used by the billing and delivery dealer/managers for the distribution of funds. Mandatory at the Post Trade stage.
+          enum:
+          - Euroclear/Clearstream
+          - Euroclear France
+          - CMU
+          - CMU with link to Euroclear/Clearstream
+          - VPS
+          - Clearstream Luxembourg
+          - Euroclear Belgium
+          - Euroclear Netherlands
+          - OeKB CSD GmbH
+          - Clearstream Banking Frankfurt
+          - National Bank of Belgium
+          - VP Securities A/S
+          - DTC
+          - Clearstream Frankfurt
+        issuer_clearing_house:
           type: string
-          pattern: ^[A-Z]{6}$
-          description: The CFI (ISO 10962, 6 letters) is assigned with the ISIN by the numbering agency. Conditional based on issuer requirements.
-        cins_code:
+          description: Clearing house used by the issuer for the receipt of funds. Mandatory at the Post Trade stage.
+          enum:
+          - Euroclear/Clearstream
+          - Euroclear France
+          - CMU
+          - CMU with link to Euroclear/Clearstream
+          - VPS
+          - Clearstream Luxembourg
+          - Euroclear Belgium
+          - Euroclear Netherlands
+          - OeKB CSD GmbH
+          - Clearstream Banking Frankfurt
+          - National Bank of Belgium
+          - VP Securities A/S
+          - DTC
+          - Clearstream Frankfurt
+        issuer_account:
           type: string
-          pattern: ^[0-9A-Z]{9}$
-          description: A CINS number is an extension to the CUSIP numbering system, which is used to uniquely identify securities offered outside of the United States and Canada. Just as with CUSIP numbers, the CINS number consists of nine characters.
-        cmu_code:
+          description: Clearing system account 5 digit number used by the issuer for the receipt of funds. Mandatory at the Post Trade stage.
+        delivery:
           type: string
-          pattern: ^[A-Z]{6}[0-9]{5}$
-          description: The CMU code is used by Hong Kong Monetary Authority to provide computerised clearing and settlement facilities for Exchange Fund Bills and Notes.
-        common_code:
-          type: string
-          pattern: ^[0-9A-Z]{9}$
-          description: A 9-digit number used to uniquely identify individual securities between the ICSDs and their participants, and allocated by either of the ICSDs.
-        cusip_code:
-          type: string
-          pattern: ^[0-9A-Z]{9}$
-          description: Unique 9 digit alpha-numeric identification code assigned to stocks and registered bonds in the United States and Canada. It comprises nine letters and includes letters and numbers.
-        isin_code:
-          type: string
-          pattern: ^[A-Z]{2}[0-9A-Z]{9}[0-9]$
-          description: A 12-digit security identification code (ISO 6166) comprised of a 2-digit ISO 3166 country code, a 9-digit national number and a 1-digit 'check number'.
-        fisn_code:
-          type: string
-          pattern: ^(?=.{1,35}$)(?:((?:[^/]){1,15})/([^/]+))$
-          description: A FISN is an ISO 18774 standard that encompasses an issuer of securities' short name. The FISN is an abbreviated version of the long company name and can only be up to 15 characters in length.
-        sedol_code:
-          type: string
-          pattern: ^[0-9A-Z]{7}$
-          description: Unique seven-character alphanumeric identifiers assigned to securities that trade on the London Stock Exchange and other smaller exchanges in the United Kingdom. SEDOL codes have a unique checksum character assigned at the end. The seventh digit is a weighted sum of the first six characters.
-        valoren_code:
-          type: string
-          pattern: ^[0-9]{6,9}$
-          description: VALOR number is a code which uniquely identifies listed securities and financial instruments in Switzerland.
-        wkn_code:
-          type: string
-          pattern: ^[0-9A-HJ-NP-Z]{6}$
-          description: German six-digit alphanumerical code for the identification of a security
-    Dealer:
+          enum:
+          - Delivery versus payment
+          - Delivery free of payment
+          description: Delivery versus payment (DVP) is a securities industry settlement method that guarantees the transfer of securities only happens after payment has been made. Delivery free of payment (FOP) settlement involves delivery of the securities without a prior/simultaneous (or in some cases any) transfer of funds. Mandatory.
+    Pricing:
       type: object
       properties:
-        country:
+        accrual_quotation_type:
           type: string
           enum:
-          - Supra
-          - AD
-          - AE
-          - AF
-          - AG
-          - AI
-          - AL
-          - AM
-          - AO
-          - AQ
-          - AR
-          - AS
-          - AT
-          - AU
-          - AW
-          - AX
-          - AZ
-          - BA
-          - BB
-          - BD
-          - BE
-          - BF
-          - BG
-          - BH
-          - BI
-          - BJ
-          - BL
-          - BM
-          - BN
-          - BO
-          - BQ
-          - BR
-          - BS
-          - BT
-          - BV
-          - BW
-          - BY
-          - BZ
-          - CA
-          - CC
-          - CD
-          - CF
-          - CG
-          - CH
-          - CI
-          - CK
-          - CL
-          - CM
-          - CN
-          - CO
-          - CR
-          - CU
-          - CV
-          - CW
-          - CX
-          - CY
-          - CZ
-          - DE
-          - DJ
-          - DK
-          - DM
-          - DO
-          - DZ
-          - EC
-          - EE
-          - EG
-          - EH
-          - ER
-          - ES
-          - ET
-          - FI
-          - FJ
-          - FK
-          - FM
-          - FO
-          - FR
-          - GA
-          - GB
-          - GD
-          - GE
-          - GF
-          - GG
-          - GH
-          - GI
-          - GL
-          - GM
-          - GN
-          - GP
-          - GQ
-          - GR
-          - GS
-          - GT
-          - GU
-          - GW
-          - GY
-          - HK
-          - HM
-          - HN
-          - HR
-          - HT
-          - HU
-          - ID
-          - IE
-          - IL
-          - IM
-          - IN
-          - IO
-          - IQ
-          - IR
-          - IS
-          - IT
-          - JE
-          - JM
-          - JO
-          - JP
-          - KE
-          - KG
-          - KH
-          - KI
-          - KM
-          - KN
-          - KP
-          - KR
-          - KW
-          - KY
-          - KZ
-          - LA
-          - LB
-          - LC
-          - LI
-          - LK
-          - LR
-          - LS
-          - LT
-          - LU
-          - LV
-          - LY
-          - MA
-          - MC
-          - MD
-          - ME
-          - MF
-          - MG
-          - MH
-          - MK
-          - ML
-          - MM
-          - MN
-          - MO
-          - MP
-          - MQ
-          - MR
-          - MS
-          - MT
-          - MU
-          - MV
-          - MW
-          - MX
-          - MY
-          - MZ
-          - NA
-          - NC
-          - NE
-          - NF
-          - NG
-          - NI
-          - NL
-          - 'NO'
-          - NP
-          - NR
-          - NU
-          - NZ
-          - OM
-          - PA
-          - PE
-          - PF
-          - PG
-          - PH
-          - PK
-          - PL
-          - PM
-          - PN
-          - PR
-          - PS
-          - PT
-          - PW
-          - PY
-          - QA
-          - RE
-          - RO
-          - RS
-          - RU
-          - RW
-          - SA
-          - SB
-          - SC
-          - SD
-          - SE
-          - SG
-          - SH
-          - SI
-          - SJ
-          - SK
-          - SL
-          - SM
-          - SN
-          - SO
-          - SR
-          - SS
-          - ST
-          - SV
-          - SX
-          - SY
-          - SZ
-          - TC
-          - TD
-          - TF
-          - TG
-          - TH
-          - TJ
-          - TK
-          - TL
-          - TM
-          - TN
-          - TO
-          - TR
-          - TT
-          - TV
-          - TW
-          - TZ
-          - UA
-          - UG
-          - UM
-          - US
-          - UY
-          - UZ
-          - VA
-          - VC
-          - VE
-          - VG
-          - VI
-          - VN
-          - VU
-          - WF
-          - WS
-          - YE
-          - YT
-          - ZA
-          - ZM
-          - ZW
-          description: The country of domicile of the dealer/manager entity on the transaction. Mandatory.
-        lei:
+          - CLEAN
+          - DIRTY
+          - NOT_APP
+          description: Indicates whether acrued interest is included or excluded from prices on the transaction. Mandatory.
+        all_in_issuer_spread_vs_benchmark:
+          type: number
+          description: The all-in issuer spread of the bond to be issued over the benchmark reference.
+        benchmark_reference:
           type: string
-          pattern: ^[0-9A-Z]{18}[0-9]{2}$
-          description: The LEI of the dealer entity on the transaction. Mandatory if the dealer entity has an LEI.
-        name:
-          type: string
-          description: Dealer/managers associated with the transaction. Mandatory.
-        role:
-          type: string
-          enum:
-          - Lead Manager &amp; Sole Bookrunner
-          - Sole Manager
-          - Lead Manager
-          - Joint-Lead Manager
-          - Senior Co-Lead Manager
-          - Co-Lead Manager
-          description: The role of the Manager on the transaction. Mandatory for syndicated issuance.
-        is_settlement_manager:
-          type: boolean
-          description: Indicates whether the manager is the settlement manager. Mandatory for syndicated trades.
-        is_stabilising_manager:
-          type: boolean
-          description: Indicates whether the manager is a stabilising manager. Mandatory where specified as part of a syndicated issuance.
-    Denominations:
-      type: object
-      properties:
-        increment:
-          type: integer
-          description: The smallest amount by which the min_denom is allowed to be increased. Mandatory where an increment is required.
-        min_denom:
-          type: integer
-          description: The minimum amount of the security that can be transferred. Mandatory.
-    ProductType:
-      type: string
-      enum:
-      - Covered Bonds
-      - Senior Secured
-      - Senior Unsecured
-      - Senior Preferred
-      - Senior Non Preferred
-      - Lower Tier 2
+          description: The benchmark being used as a reference security for pricing purposes. Optional for benchmark transactions with a fixed rate component.
+        benchmark_reference_yield:
+          type: number
+          description: The yield of the benchmark being used as a reference security for pricing purposes. Optional for benchmark transactions with a fixed rate component.
+        commission_percentage:
+          type: number
+          description: The commission percentage paid to the dealer(s) for this transaction. Mandatory if an explicit commission is being charged for this issuance.
+        issue_price:
+          type: number
+          description: The issuance (i.e. closing date) issue price of the security expressed in percentage. For benchmark issuance this is the re-offer price. Mandatory.
+        mid_swap_yield:
+          type: number
+          description: The yield of the benchmark being used as a reference security for pricing purposes. Optional for benchmark transactions with a fixed rate component.
+        reoffer_coupon_spread:
+          type: number
+          description: The yield spread between the reference security/rate being used as the basis for pricing the floating rate note and the security to be issued. Mandatory for benchmark transactions with a floating rate component.
+        reoffer_spread_to_benchmark:
+          type: number
+          description: The yield of the benchmark being used as a reference security for pricing purposes. Optional for benchmark transactions with a fixed rate component.
+        reoffer_spread_to_mid_swap:
+          type: number
+          description: The yield of the benchmark being used as a reference security for pricing purposes. Optional for benchmark transactions with a fixed rate component.
+        reoffer_yield:
+          type: number
+          description: The yield of the benchmark being used as a reference security for pricing purposes. Optional for benchmark transactions with a fixed rate component.
     ProductGovernance:
       type: object
       properties:
@@ -1991,13 +1394,13 @@ components:
         target_market_verbose:
           type: string
           description: A more detailed description of the target market for the notes. Mandatory at the Termsheet Stage; not required for Post Trade.
-    IssuanceCategory:
+    CouponTypeISO:
       type: string
       enum:
-      - General Corporate Purposes
-      - Green Bonds
-      - Social Bonds
-      - Sustainable Bonds
+      - FIXD
+      - FLRN
+      - ZCPN
+      - OTHR
     Form:
       type: object
       properties:
@@ -2055,6 +1458,191 @@ components:
           - Registered
           - Uncertificated Dematerialised Book-Entry
           - VPS
+    MethodOfDistribution:
+      type: string
+      enum:
+      - SYND
+      - NSYN
+    StagesAvailable:
+      type: string
+      enum:
+      - final_termsheet
+      - post_trade_legal
+    Denominations:
+      type: object
+      properties:
+        increment:
+          type: integer
+          description: The smallest amount by which the min_denom is allowed to be increased. Mandatory where an increment is required.
+        min_denom:
+          type: integer
+          description: The minimum amount of the security that can be transferred. Mandatory.
+    CurrencyObject:
+      type: object
+      properties:
+        notional:
+          type: string
+          description: 3 letter ISO 4127 code representing the currency of the notional. Mandatory.
+          enum:
+          - USD
+          - EUR
+          - GBP
+          - JPY
+          - CHF
+          - AUD
+          - NZD
+          - CAD
+          - SEK
+          - NOK
+          - HKD
+          - AED
+          - AMD
+          - ARS
+          - BRL
+          - CLP
+          - CNH
+          - CNY
+          - COP
+          - CZK
+          - DKK
+          - EEK
+          - GEL
+          - HUF
+          - IDR
+          - INR
+          - ISK
+          - KGS
+          - KRW
+          - KZT
+          - MXN
+          - MYR
+          - NTD
+          - PEN
+          - PHP
+          - PLN
+          - QAR
+          - RON
+          - RSD
+          - RUB
+          - SGD
+          - TRY
+          - UAH
+          - UYU
+          - UZS
+          - VND
+          - ZAR
+          - ZMK
+        payment:
+          type: string
+          description: 3 letter ISO 4127 code representing the currency in which payment is to be made. Mandatory if the payment currency differs from the notional currency.
+          enum:
+          - USD
+          - EUR
+          - GBP
+          - JPY
+          - CHF
+          - AUD
+          - NZD
+          - CAD
+          - SEK
+          - NOK
+          - HKD
+          - AED
+          - AMD
+          - ARS
+          - BRL
+          - CLP
+          - CNH
+          - CNY
+          - COP
+          - CZK
+          - DKK
+          - EEK
+          - GEL
+          - HUF
+          - IDR
+          - INR
+          - ISK
+          - KGS
+          - KRW
+          - KZT
+          - MXN
+          - MYR
+          - NTD
+          - PEN
+          - PHP
+          - PLN
+          - QAR
+          - RON
+          - RSD
+          - RUB
+          - SGD
+          - TRY
+          - UAH
+          - UYU
+          - UZS
+          - VND
+          - ZAR
+          - ZMK
+        settlement:
+          type: string
+          description: 3 letter ISO 4127 code representing the currency in which the issue will be settled. Mandatory if the settlement currency differs from the notional currency.
+          enum:
+          - USD
+          - EUR
+          - GBP
+          - JPY
+          - CHF
+          - AUD
+          - NZD
+          - CAD
+          - SEK
+          - NOK
+          - HKD
+          - AED
+          - AMD
+          - ARS
+          - BRL
+          - CLP
+          - CNH
+          - CNY
+          - COP
+          - CZK
+          - DKK
+          - EEK
+          - GEL
+          - HUF
+          - IDR
+          - INR
+          - ISK
+          - KGS
+          - KRW
+          - KZT
+          - MXN
+          - MYR
+          - NTD
+          - PEN
+          - PHP
+          - PLN
+          - QAR
+          - RON
+          - RSD
+          - RUB
+          - SGD
+          - TRY
+          - UAH
+          - UYU
+          - UZS
+          - VND
+          - ZAR
+          - ZMK
+    Seniority:
+      type: string
+      enum:
+      - SNDB
+      - MZZD
+      - SBOD
+      - JUND
     Interest:
       type: object
       properties:
@@ -3363,70 +2951,330 @@ components:
                 description: Date on which the the interest period will end, usually defined by the last interest payment date of the interest period. Mandatory.
               underlying:
                 $ref: '#/components/schemas/UnderlyingObject'
-    IssuanceType:
+    ProductType:
       type: string
       enum:
-      - BPRO
-      - STDA
-    UnderlyingObject:
+      - Covered Bonds
+      - Senior Secured
+      - Senior Unsecured
+      - Senior Preferred
+      - Senior Non Preferred
+      - Lower Tier 2
+    Documentations:
+      type: array
+      items:
+        type: string
+        enum:
+        - GMTN
+        - EMTN
+        - GIP
+        - DIP
+        - NeuMTN
+        - DMTN
+        - OP
+        - EMTN &amp; CB
+        - GCIMTN &amp; CB
+        - CD
+        - ECD
+        - YCD
+        - DN
+        - GCP
+        - ECP
+        - USCP
+        - NEUCP
+        - TC
+        - CB
+        - GCB
+        - ECB
+        - GMTCN
+        - EMTCN
+        - GRCB
+        - GLCB
+        - ECP &amp; CD
+        - GDIF
+        - NSV
+        - SSD
+        - RCB
+    Dealer:
       type: object
       properties:
+        country:
+          type: string
+          enum:
+          - Supra
+          - AD
+          - AE
+          - AF
+          - AG
+          - AI
+          - AL
+          - AM
+          - AO
+          - AQ
+          - AR
+          - AS
+          - AT
+          - AU
+          - AW
+          - AX
+          - AZ
+          - BA
+          - BB
+          - BD
+          - BE
+          - BF
+          - BG
+          - BH
+          - BI
+          - BJ
+          - BL
+          - BM
+          - BN
+          - BO
+          - BQ
+          - BR
+          - BS
+          - BT
+          - BV
+          - BW
+          - BY
+          - BZ
+          - CA
+          - CC
+          - CD
+          - CF
+          - CG
+          - CH
+          - CI
+          - CK
+          - CL
+          - CM
+          - CN
+          - CO
+          - CR
+          - CU
+          - CV
+          - CW
+          - CX
+          - CY
+          - CZ
+          - DE
+          - DJ
+          - DK
+          - DM
+          - DO
+          - DZ
+          - EC
+          - EE
+          - EG
+          - EH
+          - ER
+          - ES
+          - ET
+          - FI
+          - FJ
+          - FK
+          - FM
+          - FO
+          - FR
+          - GA
+          - GB
+          - GD
+          - GE
+          - GF
+          - GG
+          - GH
+          - GI
+          - GL
+          - GM
+          - GN
+          - GP
+          - GQ
+          - GR
+          - GS
+          - GT
+          - GU
+          - GW
+          - GY
+          - HK
+          - HM
+          - HN
+          - HR
+          - HT
+          - HU
+          - ID
+          - IE
+          - IL
+          - IM
+          - IN
+          - IO
+          - IQ
+          - IR
+          - IS
+          - IT
+          - JE
+          - JM
+          - JO
+          - JP
+          - KE
+          - KG
+          - KH
+          - KI
+          - KM
+          - KN
+          - KP
+          - KR
+          - KW
+          - KY
+          - KZ
+          - LA
+          - LB
+          - LC
+          - LI
+          - LK
+          - LR
+          - LS
+          - LT
+          - LU
+          - LV
+          - LY
+          - MA
+          - MC
+          - MD
+          - ME
+          - MF
+          - MG
+          - MH
+          - MK
+          - ML
+          - MM
+          - MN
+          - MO
+          - MP
+          - MQ
+          - MR
+          - MS
+          - MT
+          - MU
+          - MV
+          - MW
+          - MX
+          - MY
+          - MZ
+          - NA
+          - NC
+          - NE
+          - NF
+          - NG
+          - NI
+          - NL
+          - 'NO'
+          - NP
+          - NR
+          - NU
+          - NZ
+          - OM
+          - PA
+          - PE
+          - PF
+          - PG
+          - PH
+          - PK
+          - PL
+          - PM
+          - PN
+          - PR
+          - PS
+          - PT
+          - PW
+          - PY
+          - QA
+          - RE
+          - RO
+          - RS
+          - RU
+          - RW
+          - SA
+          - SB
+          - SC
+          - SD
+          - SE
+          - SG
+          - SH
+          - SI
+          - SJ
+          - SK
+          - SL
+          - SM
+          - SN
+          - SO
+          - SR
+          - SS
+          - ST
+          - SV
+          - SX
+          - SY
+          - SZ
+          - TC
+          - TD
+          - TF
+          - TG
+          - TH
+          - TJ
+          - TK
+          - TL
+          - TM
+          - TN
+          - TO
+          - TR
+          - TT
+          - TV
+          - TW
+          - TZ
+          - UA
+          - UG
+          - UM
+          - US
+          - UY
+          - UZ
+          - VA
+          - VC
+          - VE
+          - VG
+          - VI
+          - VN
+          - VU
+          - WF
+          - WS
+          - YE
+          - YT
+          - ZA
+          - ZM
+          - ZW
+          description: The country of domicile of the dealer/manager entity on the transaction. Mandatory.
+        lei:
+          type: string
+          pattern: ^[0-9A-Z]{18}[0-9]{2}$
+          description: The LEI of the dealer entity on the transaction. Mandatory if the dealer entity has an LEI.
         name:
           type: string
-          description: Name of the underlying on which the interest parameters are dependent. Mandatory if the issuance has interest parameters dependent on an underlying.
-        type:
+          description: Dealer/managers associated with the transaction. Mandatory.
+        role:
           type: string
           enum:
-          - Equity
-          - Index
-          - Credit
-          - CMS
-          - Other
-          description: Type of the underlying on which the interest parameters are dependent. Mandatory if the issuance has interest parameters dependent on an underlying.
-        isin_code:
-          type: string
-          description: ISIN of the underlying on which the interest parameters are dependent. Mandatory when the underlying redemption basis has an ISIN code.
-    Listing:
-      type: object
-      properties:
-        name:
-          type: string
-          enum:
-          - Berlin Stock Exchange
-          - Euronext Amsterdam
-          - Euronext Brussels
-          - Euronext Dublin
-          - Euronext Lisbon
-          - Euronext Paris
-          - ExtraMOT
-          - Frankfurt Stock Exchange
-          - Helsinki Stock Exchange
-          - Hong Kong Stock Exchange
-          - Labuan International Financial Exchange
-          - London Stock Exchange
-          - Luxembourg Stock Exchange
-          - Munich Stock Exchange
-          - Nasdaq Copenhagen A/S
-          - Nasdaq Stockholm
-          - Oslo Stock Exchange
-          - SIX
-          - Singapore SGX
-          - Stuttgart
-          - Taipei Exchange
-          - Trace
-          - Vienna Stock Exchange
-          description: Exchange where the bonds are to be listed. Mandatory if listing is required.
-        market_type:
-          type: string
-          enum:
-          - RMKT
-          - RMQI
-          - MSGM
-          - MLTF
-          description: The market of the exchange where the bond is to be listed. Mandatory if a listing exchange is required, but will default to 'Regulated Market' if not provided.
-        market_mic_code:
-          type: string
-          description: MIC code(s) (ISO standard 10383) of the exchange(s) on which the securities will be listed. Mandatory if listing is required.
+          - Lead Manager &amp; Sole Bookrunner
+          - Sole Manager
+          - Lead Manager
+          - Joint-Lead Manager
+          - Senior Co-Lead Manager
+          - Co-Lead Manager
+          description: The role of the Manager on the transaction. Mandatory for syndicated issuance.
+        is_settlement_manager:
+          type: boolean
+          description: Indicates whether the manager is the settlement manager. Mandatory for syndicated trades.
+        is_stabilising_manager:
+          type: boolean
+          description: Indicates whether the manager is a stabilising manager. Mandatory where specified as part of a syndicated issuance.
     TradeDataListAPIResponse:
       type: object
       properties:
@@ -3549,134 +3397,304 @@ components:
         status_of_the_notes: Senior Preferred
         trade_date: '2021-03-26'
         trade_id: 28676
-    Redemption:
+    TradeDataAPIResponse:
       type: object
       properties:
-        call_features:
+        agents:
+          type: object
+          $ref: '#/components/schemas/Agents'
+        bond_fallback_provisions:
+          type: string
+          description: Specifies any fallback provisions associated with the bond. Mandatory if fallback provisions are required.
+        clearing:
+          type: object
+          $ref: '#/components/schemas/Clearing'
+        confidential:
+          type: boolean
+          description: Indicates whether the details of the security are to be made available to the market, or kept private by the ICSDs and agent(s). Will only be provided if the information is available.
+        currency:
+          type: object
+          $ref: '#/components/schemas/CurrencyObject'
+        dealers:
           type: array
           items:
-            type: string
-            enum:
-            - Make-Whole Redemption
-            - Par Call
-            - M&amp;A Call
-            - Clean-up Call
-            - Tax Call
-            - None
-          description: List of the issuer's redemption features associated with the bond. Mandatory at the Termsheet stage (can be 'None'); required at Post Trade only if specified in the Form of Final Terms.
-        call_notice_period_days_type:
-          type: string
-          description: When an issuer call option is present, this specifies whether the notice period is defined in calendar days or business days. Mandatory if an issuer call is present.
-          enum:
-          - Business Days
-          - Calendar Days
-        call_notice_period_min:
-          type: integer
-          description: Notice period which the option holder is required to give the counterparty before redemptin in whole business days. Mandatory if an issuer call is applicable.
-        call_optional_redemption_price:
-          type: number
-          description: Price at which the bond will be redeemed if the call option is exercised. Mandatory if an issuer call is applicable and the optional redemption value is to be expressed as a price.
-        call_optional_redemption_dates:
+            type: object
+            $ref: '#/components/schemas/Dealer'
+        denominations:
           type: array
           items:
-            type: string
-          description: Date(s) on which the call option on the bond can be exercised by the issuer. ISO 8601 date format YYYY-MM-DD. Mandatory if an issuer call is applicable.
-        call_par_call_term:
+            type: object
+            $ref: '#/components/schemas/Denominations'
+        ecb_eligible:
+          type: boolean
+          description: Flag to indicate the security is intended to be held in a manner that could allow the Eurosystem Eligibility. Mandatory for NGN or for CGN if under the New Safekeeping Structure (NSS).
+        form:
+          type: object
+          $ref: '#/components/schemas/Form'
+        fungible:
+          type: object
+          $ref: '#/components/schemas/Fungible'
+        guarantors:
+          type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/Guarantor'
+        governing_law:
+          allOf:
+          - $ref: '#/components/schemas/GoverningLaw'
+          - description: Jurisdiction (country, county, state, province, city) of the issue. Mandatory.
+        identifiers:
+          type: object
+          $ref: '#/components/schemas/Identifiers'
+        interest:
+          type: object
+          $ref: '#/components/schemas/Interest'
+        issuance_category:
+          allOf:
+          - $ref: '#/components/schemas/IssuanceCategory'
+          - description: Denotes whether the use of proceeds relates to general corporate purposes or is to be applied to a specific ESG-related purpose. Mandatory.
+        issuance_type:
+          allOf:
+          - $ref: '#/components/schemas/IssuanceType'
+          - description: Indicates whether the securities are being issued under a programme or on a standalone basis. Mandatory.
+        is_fungible:
+          type: boolean
+          description: It indicates if the security (daughter code) is to be fungible with an original tranche (mother code). Mandatory.
+        issuers:
+          type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/Issuer'
+        listings:
+          type: object
+          properties:
+            date:
+              type: string
+              format: date
+              description: Date on which the bonds are intended to be listed (typically the settlement date but may be different). ISO 8601 date format YYYY-MM-DD. Mandatory if listing is required.
+            exchanges:
+              type: array
+              items:
+                type: object
+                $ref: '#/components/schemas/Listing'
+        method_of_distribution:
+          allOf:
+          - $ref: '#/components/schemas/MethodOfDistribution'
+          - description: The way in which the issue will be marketed to the primary market, via individual dealers (so called non syndicated distribution) or via a syndicate of managers, underwriters and selling group members (so called syndicated distribution). Mandatory.
+        net_proceeds:
+          type: number
+          description: The proceeds of the transaction due to the issuer on the settlement date. Mandatory.
+        other_provisions:
+          type: object
+          $ref: '#/components/schemas/OtherProvisions'
+        pricing:
+          type: object
+          $ref: '#/components/schemas/Pricing'
+        private_placement:
+          type: boolean
+          description: 'Indicates whether the issuance is a private placement or not. Mandatory.
+
+            '
+        product_governance:
+          type: object
+          $ref: '#/components/schemas/ProductGovernance'
+        programme:
+          type: object
+          $ref: '#/components/schemas/Programme'
+        rating_type:
+          allOf:
+          - $ref: '#/components/schemas/RatingType'
+          - description: Whether the band will be explicitly rated (Issue rating), whether a rating in line with other bonds of the same seniority issued under the programme will be specified in the final terms (Product rating) or whether the bonds will be explicitly unrated (Unrated). Mandatory
+        ratings:
+          type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/Ratings'
+        redemption:
+          type: object
+          $ref: '#/components/schemas/Redemption'
+        security_name:
+          type: string
+          description: 'Description of the financial instrument in the form: "currency.notional+size+interest.type+status_of_the_notes Notes". Mandatory.'
+        security_type:
+          allOf:
+          - $ref: '#/components/schemas/SecurityType'
+          - description: Indicates the type of security to be issued. Mandatory.
+        selling_restrictions:
+          allOf:
+          - $ref: '#/components/schemas/SellingRestrictions'
+          - description: Requirements on the Issuer/Manager/Noteholders on the selling of the securities in the market. Mandatory.
+        seniority:
+          allOf:
+          - $ref: '#/components/schemas/Seniority'
+          - description: Seniority of the bond. Mandatory.
+        series_number:
+          type: string
+          description: Identifies the series number. Mandatory if the issuer uses series numbers.
+        series_size:
           type: integer
-          description: The period in months before the maturity date within which the Par Call can be exercised by the issuer. Mandatory if a Par Call is specified within redemption.call_features.
-        clean_up_call_redemption_amount:
-          type: number
-          description: The amount of the outstanding notes of a series which the issuer needs to own in order to exercise the Clean-up Call, expressed as a percentage. Mandatory if a Clean-up Call is specified within redemption.call_features.
-        make_whole_margin:
-          type: number
-          description: The margin over the benchmark security which the issuer would need to pay to redeem the security under the Make Whole Redemption Option. Mandatory if a Make-Whole Redemption is specified within redemption.call_features.
-        callable_structure:
+          description: For fungible issues, identifies the total nominal amount of the issued securities after inclusion of the tranche being issued. For non-fungible issues this is the tranche total nominal amount. Mandatory for MTN issuance.
+        settlement_date:
           type: string
-          description: The structure of the callable note, describing the tenor, non-call period and the optional redemption frequency after the initial call if applicable. Mandatory for callable notes.
-        change_of_control_put_required:
-          type: boolean
-          description: Indicates whether a Change of Control Put Option is applicable. Mandatory.
-        early_redemption_event_details:
+          format: date
+          description: The date on which issue’s proceeds are paid to the issuer and securities are created and distributed to investors (primary distribution/settlement). ISO 8601 date format YYYY-MM-DD. Mandatory.
+        settlement_window_business_day_count:
+          type: integer
+          description: The number of days representing the time between the trade date and settlement date. Mandatory.
+        size:
+          type: integer
+          description: Total nominal amount of the tranche issued. Mandatory.
+        signing_date:
           type: string
-          description: Specifies any relevant early redemption details. Mandatory for Senior Non-Preferred issuance.
-        maturity_date:
+          format: date
+          description: The date on which the final terms / offering documentation is signed. Mandatory.
+        status_of_the_notes:
+          allOf:
+          - $ref: '#/components/schemas/ProductType'
+          - description: Indicates the seniority of the notes (included alongside seniority as it enables the differentiation beween Senior Preferred/Senior Non-Preferred). Mandatory.
+        time_of_execution:
           type: string
-          description: Planned final repayment date known at the time of issuance. ISO 8601 date format YYYY-MM-DD. Mandatory for all issues which are not perpetual.
-        perpetual:
-          type: boolean
-          description: Whether the securities have a maturity date or are issued in perpetual form. Mandatory.
-        price:
-          type: number
-          description: Code used to specify the percentage or price payable per denomination, i.e. at par, above par or below par. Expressed in % for issues in Nominal form, in Amount for issues in Unit form. Mandatory.
-        type:
+          description: Time of execution, expressed with a location to provide a timezone (e.g. 11am Brussels time). Mandatory if the transaction requires a time of execution.
+        tefra_category:
+          allOf:
+          - $ref: '#/components/schemas/TefraCategoryISO'
+          - description: Indicates the TEFRA rule under which the security is issued. This uses the ISO 20022 code where TEFRA category is C or D. If a TEFRA category is not explicitly mentioned, this will be defaulted to NOT_APP. Mandatory.
+        trade_date:
           type: string
-          description: Indicates the type of redemption (at maturity , final redemption, before maturity , partial redemption, call or put). Mandatory.
-          enum:
-          - Final Redemption
-          - Partial Redemption without reduction
-          - Partial Redemption with reduction
-          - Drawing at random
-          - Drawing pro-rata
-          - Redemption in shares
-          - Call
-          - Put
-        type_iso:
+          format: date
+          description: Date on which the transaction was executed for private placements; pricing date for benchmark transactions. ISO 8601 date format YYYY-MM-DD. Mandatory.
+        trading_method:
+          allOf:
+          - $ref: '#/components/schemas/TradingMethod'
+          - description: Indicates whether the notional amount value is to be traded in either an amount or a unit. Mandatory.
+        tranche_number:
           type: string
-          description: ISO 20022 MaturityRedemptionType1Code code which indicates the type of redemption (Final Redemption, Partial Redemption without reduction, Partial Redemption with reduction, Drawing at random, Drawing pro-rata, Call, Put). Mandatory.
-          enum:
-          - FRED
-          - PRNR
-          - PRWR
-          - RNDM
-          - PRRA
-          - OTHR
-          - CALL
-          - PUUT
-        extended_maturity_date:
+          description: Indicates the number of the tranche. Mandatory if the issuer uses tranche numbers.
+        use_of_proceeds:
           type: string
-          description: The Extended Final Maturity Date at the end of the extended period where the issuance is subject to a potential coupon extension. Mandatory for Covered Bonds with a Soft Bullet maturity type.
-        covered_maturity_type:
-          type: string
-          enum:
-          - Hard Bullet
-          - Soft Bullet
-          - Conditional Pass-Through
-          description: For Covered Bonds, indicates whether the maturity of the issue can be extended (Soft Bullet or Conditional Pass-Through) or not (Hard Bullet). Mandatory for Covered Bonds.
-        underlying:
-          $ref: '#/components/schemas/UnderlyingObject'
-    Agents:
-      type: object
-      properties:
-        determination_agent:
-          type: object
-          properties:
-            name:
-              type: string
-              description: The name of the determination agent. Mandatory if a determination agent is required for the notes.
-        calculation_agent:
-          type: object
-          properties:
-            name:
-              type: string
-              description: An agent appointed by the issuer to process and disseminate coupon rate fixing or redemption information and to determine the amount payable under a security. Mandatory if a calculation agent is required.
-        issuing_agent:
-          type: object
-          properties:
-            name:
-              type: string
-              description: An agent appointed by the issuer to issue securities to the market and receive corresponding payments, if applicable, from the Dealer on the Issue Date. Mandatory.
-        paying_agent:
-          type: object
-          properties:
-            name:
-              type: string
-              description: An agent appointed by the issuer to make payments relating to lifecycle events on the security. Mandatory.
-        registrar:
-          type: object
-          properties:
-            name:
-              type: string
-              description: An entity appointed by the Issuer to maintain the register of holders where notes are in registered form. Mandatory for Registered Notes.
+          description: The use of the proceeds of the issuance. Mandatory if the issuer indicates a use of proceeds.
+        871m_status:
+          allOf:
+          - $ref: '#/components/schemas/Status871m'
+          - description: Denotes whether the securities to be issued are in scope of US Regulation 871m. Mandatory.
+      example:
+        agents:
+          issuing_agent:
+            name: Citibank N.A., London Branch
+          paying_agent:
+            name: Citibank N.A., London Branch
+        clearing:
+          clearing_system: Euroclear/Clearstream
+        currency:
+          notional: EUR
+        dealers:
+        - name: Crédit Agricole Corporate and Investment Bank
+          country: ''
+          lei: ''
+          role: Sole Manager
+          is_settlement_manager: true
+          is_stabilising_manager: false
+        denominations:
+        - min_denom: 100000
+        form:
+          form_of_the_notes: Bearer
+        identifiers:
+          isin_code: XS1231231231
+          cfi_code: null
+          fisn_code: null
+          cins_code: null
+          valoren_code: null
+          sedol_code: null
+          wkn_code: null
+          common_code: '123123123'
+          cusip_code: null
+          cmu_code: null
+        interest:
+          first_interest_payment_date: '2022-07-21'
+          initial_stub_type: None
+          last_stub_type: None
+          periods:
+          - type: Fixed Rate
+            type_iso: FIXD
+            business_days_for_payment:
+            - TARGET2
+            business_days_for_payment_iso:
+            - OTHR
+            business_day_adjustment: Unadjusted
+            business_day_convention: Following
+            business_day_convention_iso: FWNG
+            day_count_fraction: Actual/Actual (ICMA)
+            day_count_fraction_iso: A006
+            underlying: []
+            annual_interest_payment_dates:
+            - 07-21
+            payment_frequency: Annually
+            fixed_rate: '2.0000'
+        issuers:
+        - name: Vasakronan
+          country: Åland Islands
+          ratings:
+          - agency: Fitch
+            outlook: N/A
+            value: NR
+          - agency: Moodys
+            outlook: STABLE
+            value: A3
+          - agency: S&P
+            outlook: N/A
+            value: NR
+          lei: 5493007LNZSEWN5KTV42
+          type: Corporate
+        other_provisions: {}
+        pricing:
+          issue_price: '100.000000'
+          accrual_quotation_type: CLEAN
+        product_governance:
+          target_market: Professional investors and ECPs
+        programme:
+          type: EMTN
+          name: EMTN (EUR 5.00bn updated 14-Jan-2021)
+          base_prospectus_date: '2021-01-14'
+          limit: 5.0
+          currency: EUR
+          id: '000013730'
+        redemption:
+          call_features: None
+          type: Final Redemption
+          type_iso: FRED
+          price: '100.00000'
+          perpetual: false
+          underlying: []
+          maturity_date: '2026-07-21'
+          change_of_control_put_required: true
+        listings:
+          date: '2021-07-21'
+          exchanges:
+          - name: Euronext Dublin
+            market_type: RMKT
+            market_mic_code: ''
+        is_fungible: false
+        is_listed: true
+        method_of_distribution: NSYN
+        ecb_eligible: false
+        governing_law: English
+        net_proceeds: '100000000.00'
+        private_placement: true
+        rating_type: Unrated
+        status_of_the_notes: Senior Unsecured
+        security_name: Vasakronan EUR100,000,000 5Y Fixed Rate Senior Unsecured EMTN
+        security_type: MTN
+        selling_restrictions: Reg S
+        settlement_date: '2021-07-21'
+        size: 100000000
+        seniority: SNBD
+        tefra_category: RULD
+        trade_date: '2021-07-14'
+        issuance_type: BPRO
+        trading_method: FMT
+        confidential: true
+        871m_status: Not Applicable
+        use_of_proceeds: General corporate purposes
     CouponType:
       type: string
       enum:
@@ -3684,21 +3702,3 @@ components:
       - Floating Rate
       - Zero Coupon
       - Fixed to Floating
-    StagesAvailable:
-      type: string
-      enum:
-      - final_termsheet
-      - post_trade_legal
-    RatingType:
-      type: string
-      enum:
-      - Issue
-      - Product
-      - Unrated
-    Seniority:
-      type: string
-      enum:
-      - SNDB
-      - MZZD
-      - SBOD
-      - JUND
