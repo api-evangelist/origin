@@ -64,6 +64,123 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Origin is a company surfaced as a portfolio company of general-catalyst, techstars and added to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+Origin (Origin Markets) is a digital debt capital markets (DCM) platform that automates bond issuance from front to back, connecting issuers, dealers, lawyers, and market infrastructure on a single platform. Its products cover automated transaction Documentation (termsheets and final terms with collaborative review and e-signing), Structured Notes, and a Marketplace database of 1,000+ issuers. Origin publishes a read-only Trades API and the open Airbrush "universal data language" (an ISO 20022-aligned OpenAPI specification) for post-trade straight-through processing across the ecosystem.
 
-Backed by: general-catalyst, techstars — https://originmarkets.com/
+**Areas:** Company · Financial Services · Capital Markets · Bond Issuance · Debt Capital Markets · Fixed Income · Post-Trade · ISO 20022 · Fintech · Straight-Through Processing
+
+## Origin on APIs.io
+
+Everything profiled for Origin is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/origin/](https://apis.io/providers/origin/)** — or go straight to one of the APIs or properties below.
+
+### APIs (1)
+
+- [Origin Trades API](https://apis.io/apis/origin/origin-trades-api/) — The Trades API from Origin — 3 operation(s) for trades.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [origin-trades](https://apis.io/servers/origin/origin-trades/)
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Origin Agentic Access](https://apis.io/agentic-access/origin/origin-agentic-access/)
+
+#### Examples (3)
+
+Example requests and responses.
+
+- [Origin Termsheet Fixed_Rate](https://apis.io/examples/origin/origin-termsheet-fixed_rate/)
+- [Origin Termsheet Floating_Rate](https://apis.io/examples/origin/origin-termsheet-floating_rate/)
+- [Origin Termsheet Zero_Coupon](https://apis.io/examples/origin/origin-termsheet-zero_coupon/)
+
+#### Collections (1)
+
+Postman and Open Collection request collections.
+
+- [Trades API](https://apis.io/collections/origin/open-origin-trades-api/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Origin Airbrush Overlay](https://apis.io/overlays/origin/origin-airbrush-overlay/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Origin Authentication](https://apis.io/security/origin/origin-authentication/)
+- [Origin Domain Security](https://apis.io/security/origin/origin-domain-security/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://originmarkets.com/)
+- [Documentation](https://airbrush.originmarkets.com/v3/)
+- [API reference](https://airbrush.originmarkets.com/v3/)
+- [Support](https://originmarkets.com/contact-us)
+- [Blog](https://originmarkets.com/blog)
+- [Privacy policy](https://originmarkets.com/privacy-policy)
+- [GitHub](https://github.com/OriginMarkets/)
+- [Status](https://status.originmarkets.com/)
+
+## API Evangelist rating
+
+**Kin Score 37.8** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 38.2 |
+| Contract governance | 4.5 |
+| Operational transparency | 34.2 |
+| Developer ergonomics | 47.0 |
+| Access clarity | 28.6 |
+
+**Agent readiness 23.3** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | na |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | na |
+| Error Semantics | derived (partial credit) |
+| OpenAPI Examples | documented (partial credit) |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | na |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 20.6** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/origin/](https://apis.io/providers/origin/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Origin: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/origin/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
